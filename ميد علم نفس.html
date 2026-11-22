@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<title>Psychology QBank</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg1:#0a0f1f;--bg2:#0a0f1f;--bg3:#0a0f1f;--primary:#4fc3f7;--primary-dark:#0288d1;--accent:#ffd54f;--danger:#ef5350;--success:#66bb6a;--text:#e2e8f0;--muted:#a0aec0;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,0.4);--glow:0 0 25px rgba(79,195,247,0.12);--max-width:600px;--bg-card:rgba(255,255,255,0.06);--border-card:rgba(255,255,255,0.06)}
+body.light{--bg1:#fff;--bg2:#fff;--bg3:#fff;--bg-card:#fff;--border-card:#ccc;--text:#000;--muted:#555;--primary:#1565c0;--primary-dark:#0d47a1;--accent:#f9a825;--danger:#c62828;--success:#2e7d32;--shadow:0 2px 8px rgba(0,0,0,0.08);--glow:none;background:#fff!important;background-image:none!important;animation:none!important}
+body{font-family:"Tahoma","Segoe UI","Cairo",sans-serif;background:var(--bg1);min-height:100vh;color:var(--text);display:flex;flex-direction:column;align-items:center;padding:12px 10px;transition:background .4s,color .3s}
+.app{width:100%;max-width:var(--max-width);position:relative;z-index:1}
+.top-header{text-align:center;padding:8px 0 4px}
+.top-header h1{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--primary-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .top-header h1{background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset;color:#000;text-shadow:none}
+.top-header .sub{font-size:.9rem;color:var(--primary);font-weight:600}
+.top-header .creator{font-size:.7rem;color:var(--muted);margin-top:4px}
+.top-header .creator .name{color:var(--text);font-weight:700}
+body.light .top-header .creator .name{color:#000}
+.theme-toggle-wrap{display:flex;justify-content:flex-end;margin-bottom:6px}
+.theme-toggle{display:flex;background:var(--bg-card);border:1px solid var(--border-card);border-radius:30px;padding:3px;gap:2px}
+.theme-toggle button{background:transparent;border:none;padding:4px 14px;border-radius:30px;font-size:.8rem;color:var(--muted);cursor:pointer;transition:.3s}
+.theme-toggle button.active{background:var(--primary);color:#fff;font-weight:700}
+body.light .theme-toggle button.active{background:#1565c0;color:#fff}
+.card{background:var(--bg-card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border-card);border-radius:var(--radius);box-shadow:var(--shadow),var(--glow);padding:16px 14px;margin-bottom:14px;transition:transform .2s,background .3s,border .3s;color:var(--text)}
+body.light .card{background:#fff;border:1px solid #ccc;backdrop-filter:none}
+.card-title{margin:0 0 12px;font-size:1rem;border-inline-start:3px solid var(--primary);padding-inline-start:10px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.card-title i{color:var(--accent);margin-left:6px}
+.card-title .select-all-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--muted);border-radius:12px;padding:2px 12px;font-size:.7rem;cursor:pointer;transition:.2s;font-weight:600}
+body.light .card-title .select-all-btn{background:#f0f0f0;border-color:#ccc;color:#333}
+.card-title .select-all-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.action-icons{display:flex;justify-content:space-around;gap:6px;flex-wrap:wrap}
+.action-icon{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:6px 14px;border-radius:12px;border:1.5px solid transparent;background:transparent;color:var(--muted);font-size:.7rem;font-weight:600;min-width:56px}
+.action-icon .icon{font-size:1.5rem}
+.action-icon .label{font-size:.55rem}
+.action-icon.active{border-color:var(--primary);background:rgba(79,195,247,0.08)}
+body.light .action-icon.active{border-color:#1565c0;background:#e3f2fd}
+.sub-options{display:none;padding:8px 10px;margin-top:6px;background:rgba(0,0,0,0.15);border-radius:12px;border:1px solid var(--border-card);flex-wrap:wrap;gap:6px;justify-content:center}
+body.light .sub-options{background:#f5f5f5;border-color:#ccc}
+.sub-options.show{display:flex}
+.sub-options .action-btn{border:1px solid var(--border-card);background:rgba(255,255,255,0.03);border-radius:12px;padding:5px 16px;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+body.light .sub-options .action-btn{background:#fff;border-color:#ccc;color:#333}
+.sub-options .action-btn.active{border-color:var(--primary);background:rgba(79,195,247,0.12);color:var(--text)}
+body.light .sub-options .action-btn.active{border-color:#1565c0;background:#bbdefb;color:#000}
+.section-list{display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto}
+.section-item{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border-card);border-radius:10px;padding:10px 12px;cursor:pointer;transition:all .15s;font-size:.85rem;color:var(--text);gap:8px}
+body.light .section-item{border-color:#ccc}
+.section-item.active{border-color:var(--primary);background:rgba(79,195,247,0.08)}
+body.light .section-item.active{border-color:#1565c0;background:#e3f2fd}
+.section-item .sec-title{flex:1;text-align:right;font-weight:600;line-height:1.4}
+.section-item .cnt{background:rgba(255,255,255,0.06);border-radius:30px;padding:2px 10px;font-size:.72rem;color:var(--muted);font-weight:700;min-width:36px;text-align:center}
+body.light .section-item .cnt{background:#ddd;color:#333}
+.section-item .info-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:0 4px}
+.section-item .info-btn:hover{color:var(--primary)}
+#section-explanation{margin-top:12px;padding:16px;background:rgba(0,0,0,0.15);border-radius:var(--radius);border:1px solid var(--border-card);display:none}
+body.light #section-explanation{background:#f5f5f5;border-color:#ccc}
+#section-explanation.show{display:block}
+.explain-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.explain-controls{display:flex;gap:6px;align-items:center}
+.explain-controls .lang-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--muted);padding:4px 10px;border-radius:20px;font-size:.7rem;cursor:pointer;font-weight:600}
+body.light .explain-controls .lang-btn{background:#fff;border-color:#ccc;color:#333}
+.explain-controls .lang-btn.active{border-color:var(--primary);background:rgba(79,195,247,0.12);color:var(--text)}
+body.light .explain-controls .lang-btn.active{border-color:#1565c0;background:#bbdefb;color:#000}
+.explain-controls .close-explain{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+.explain-controls .close-explain:hover{color:var(--danger)}
+#explain-text{font-size:.9rem;line-height:2;color:var(--text);background:rgba(0,0,0,0.1);padding:12px;border-radius:10px;min-height:60px;white-space:pre-wrap}
+#explain-text.en{direction:ltr;text-align:left}
+#explain-text.ar{direction:rtl;text-align:right}
+body.light #explain-text{background:#fff;color:#000;border:1px solid #ccc}
+.big-btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(79,195,247,0.25);transition:all .15s;position:relative;overflow:hidden;margin-bottom:14px}
+body.light .big-btn{background:#1565c0;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,0.3)}
+.big-btn.secondary{background:linear-gradient(135deg,#4a5568,#2d3748)}
+body.light .big-btn.secondary{background:#757575}
+.big-btn.warn{background:linear-gradient(135deg,var(--accent),#f57f17)}
+body.light .big-btn.warn{background:#f9a825;color:#000}
+.big-btn:disabled{opacity:.5;cursor:not-allowed}
+.stats-row{display:flex;justify-content:space-around;gap:8px;text-align:center;margin:6px 0}
+.stats-row .stat .num{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--primary),#81d4fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .stats-row .stat .num{background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset;color:#000}
+.stats-row .stat .lbl{font-size:.7rem;color:var(--muted)}
+.progress-stats{display:flex;align-items:center;gap:16px}
+.progress-ring{position:relative;width:70px;height:70px;flex-shrink:0}
+.progress-ring svg{transform:rotate(-90deg);width:70px;height:70px}
+.progress-ring .bg{fill:none;stroke:var(--border-card);stroke-width:6}
+body.light .progress-ring .bg{stroke:#ccc}
+.progress-ring .fg{fill:none;stroke:var(--primary);stroke-width:6;stroke-linecap:round;stroke-dasharray:176;stroke-dashoffset:176;transition:stroke-dashoffset .6s}
+body.light .progress-ring .fg{stroke:#1565c0}
+.progress-ring .center-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:var(--text)}
+.weak-link{margin-top:10px;font-size:.75rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px}
+.weak-link i{color:var(--accent)}
+.action-row-bottom{display:flex;gap:8px;margin-top:10px}
+.action-row-bottom .big-btn{flex:1;font-size:.75rem;padding:8px;margin-top:0;margin-bottom:0}
+#screen-quiz,#screen-results{display:none}
+#screen-quiz.active,#screen-results.active{display:block}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);margin-bottom:8px}
+#timer-badge{font-weight:600;font-size:.8rem;background:rgba(255,255,255,0.05);padding:2px 12px;border-radius:30px;border:1px solid var(--border-card)}
+body.light #timer-badge{background:#f0f0f0;border-color:#ccc}
+#timer-badge.warn{background:rgba(255,213,79,0.15);border-color:var(--accent);color:var(--accent)}
+#timer-badge.danger{background:rgba(239,83,80,0.2);border-color:var(--danger);color:var(--danger);animation:pulse .7s infinite alternate}
+@keyframes pulse{0%{opacity:1}100%{opacity:.5}}
+.progress-wrap{background:rgba(255,255,255,0.06);border-radius:30px;height:4px;overflow:hidden;margin-bottom:12px}
+body.light .progress-wrap{background:#ddd}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0%;transition:width .3s}
+body.light .progress-bar{background:linear-gradient(90deg,#1565c0,#f9a825)}
+.grid-toggle-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--primary);padding:3px 10px;border-radius:20px;font-size:.75rem;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-weight:600;transition:.2s}
+body.light .grid-toggle-btn{background:#e0f7fa;border-color:#b2ebf2;color:#0077a3}
+.grid-toggle-btn:hover{background:rgba(0,212,255,0.15)}
+#questions-grid-container{margin-bottom:12px;padding:12px;background:rgba(0,0,0,0.2);border-radius:12px;border:1px solid var(--border-card);display:none}
+body.light #questions-grid-container{background:#f8fafc;border-color:#ddd}
+#questions-grid-container.show{display:block}
+.grid-title{font-size:.75rem;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(36px,1fr));gap:6px;max-height:160px;overflow-y:auto;padding-right:2px}
+.grid-btn{width:100%;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.8rem;font-weight:700;border:1px solid var(--border-card);background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;transition:all .15s}
+body.light .grid-btn{background:#fff;border-color:#ccc;color:#333}
+.grid-btn:hover{border-color:var(--primary);color:var(--primary)}
+.grid-btn.current{border:2px solid var(--primary)!important;box-shadow:0 0 10px rgba(0,212,255,0.4);font-weight:900}
+.grid-btn.answered-correct{background:rgba(52,211,153,0.15)!important;border-color:var(--success)!important;color:var(--success)!important}
+body.light .grid-btn.answered-correct{background:#e8f5e9!important;border-color:#2e7d32!important;color:#2e7d32!important}
+.grid-btn.answered-wrong{background:rgba(239,83,80,0.15)!important;border-color:var(--danger)!important;color:var(--danger)!important}
+body.light .grid-btn.answered-wrong{background:#ffebee!important;border-color:#c62828!important;color:#c62828!important}
+.q-header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.q-tag{display:inline-block;background:rgba(79,195,247,0.10);color:var(--primary);font-size:.65rem;font-weight:700;padding:2px 12px;border-radius:30px;border:1px solid rgba(79,195,247,0.06)}
+body.light .q-tag{background:#e3f2fd;color:#1565c0;border-color:#bbdefb}
+.q-en{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.6;direction:ltr;text-align:left;word-wrap:break-word}
+.q-ar{font-size:.9rem;color:var(--muted);margin-bottom:14px;line-height:1.7;direction:rtl;text-align:right;word-wrap:break-word}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:center;gap:8px;border:1px solid var(--border-card);border-radius:12px;padding:10px 14px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,0.02);direction:ltr}
+body.light .option{background:#fff;border-color:#ccc}
+.option .opt-en{font-weight:600;color:var(--text);font-size:.9rem;flex:1;direction:ltr;text-align:left}
+.option .opt-ar{color:var(--muted);font-size:.8rem;direction:rtl;text-align:right;flex:1}
+.option .mark{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+.option.selected{border-color:var(--primary);background:rgba(79,195,247,0.06)}
+body.light .option.selected{border-color:#1565c0;background:#e3f2fd}
+.option.correct{border-color:var(--success);background:rgba(102,187,106,0.08)}
+body.light .option.correct{border-color:#2e7d32;background:#e8f5e9}
+.option.wrong{border-color:var(--danger);background:rgba(239,83,80,0.08)}
+body.light .option.wrong{border-color:#c62828;background:#ffebee}
+.option.disabled{cursor:default;opacity:.8}
+.feedback-box{margin-top:12px;padding:12px;border-radius:12px;font-size:.85rem;line-height:1.6}
+.feedback-box.correct{background:rgba(102,187,106,0.08);border:1px solid rgba(102,187,106,0.15);color:#a7f3d0}
+body.light .feedback-box.correct{background:#e8f5e9;border-color:#2e7d32;color:#000}
+.feedback-box.wrong{background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.15);color:#fecaca}
+body.light .feedback-box.wrong{background:#ffebee;border-color:#c62828;color:#000}
+.feedback-box .fb-title{font-weight:700;margin-bottom:4px}
+.nav-row{display:flex;gap:8px;margin-top:12px}
+.nav-row .big-btn{flex:1;margin-top:0;margin-bottom:0;font-size:.85rem;padding:10px}
+.score-circle{width:120px;height:120px;border-radius:50%;margin:8px auto 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:conic-gradient(var(--primary) calc(var(--pct)*1%),rgba(255,255,255,0.04) 0);position:relative}
+body.light .score-circle{background:conic-gradient(#1565c0 calc(var(--pct)*1%),#e0e0e0 0)}
+.score-circle::before{content:"";position:absolute;width:90px;height:90px;background:var(--bg1);backdrop-filter:blur(4px);border-radius:50%;opacity:.85}
+body.light .score-circle::before{background:#fff;opacity:.9}
+.score-circle .pct{position:relative;font-size:1.8rem;font-weight:900;color:#fff}
+body.light .score-circle .pct{color:#000}
+.score-circle .lbl{position:relative;font-size:.7rem;color:var(--muted)}
+.mistake-item{border:1px solid var(--border-card);border-radius:12px;padding:12px;margin-bottom:10px;background:rgba(255,255,255,0.02)}
+body.light .mistake-item{background:#fff;border-color:#ccc}
+.mistake-item .m-q{font-weight:700;margin-bottom:2px;direction:ltr;text-align:left}
+.mistake-item .m-you{color:var(--danger);font-size:.8rem}
+body.light .mistake-item .m-you{color:#c62828}
+.mistake-item .m-correct{color:var(--success);font-size:.8rem}
+body.light .mistake-item .m-correct{color:#2e7d32}
+.mistake-toggle{background:none;border:1px solid var(--border-card);border-radius:8px;padding:4px 12px;cursor:pointer;color:var(--text);font-size:.75rem;margin-top:6px}
+body.light .mistake-toggle{border-color:#ccc;color:#000}
+.mistake-detail{margin-top:10px;border:1px solid var(--border-card);border-radius:10px;padding:12px;background:rgba(255,255,255,0.03);direction:ltr;text-align:left}
+body.light .mistake-detail{background:#f9f9f9;border-color:#ccc}
+.mistake-detail .opt-row{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border-card)}
+body.light .mistake-detail .opt-row{border-color:#ddd}
+.mistake-detail .opt-row:last-child{border-bottom:none}
+.mistake-detail .opt-label{flex:1}
+.mistake-detail .opt-status{font-size:1rem;margin-left:8px}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);font-size:.7rem;margin-top:20px;margin-bottom:8px;opacity:.6}
+footer .name{color:var(--primary);font-weight:700}
+body.light footer .name{color:#1565c0}
+.word-en{display:inline-block;cursor:default;transition:background .15s,transform .1s;padding:1px 2px;border-radius:4px;direction:ltr}
+.word-en:active{background:rgba(79,195,247,0.15);transform:scale(.97)}
+body.light .word-en:active{background:#bbdefb}
+.word-en.speaking{background:rgba(255,213,79,0.25);box-shadow:0 0 10px rgba(255,213,79,0.2)}
+body.light .word-en.speaking{background:#fff9c4}
+.speech-hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);color:#fff;padding:6px 18px;border-radius:30px;font-size:.8rem;pointer-events:none;opacity:0;transition:opacity .3s;z-index:999;border:1px solid rgba(255,255,255,0.1)}
+body.light .speech-hint{background:#f0f0f0;color:#000;border-color:#ccc}
+.speech-hint.show{opacity:1}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);transform:scale(0);animation:rippleAnim .5s linear;pointer-events:none}
+body.light .ripple{background:rgba(0,0,0,0.1)}
+@keyframes rippleAnim{to{transform:scale(3);opacity:0}}
+@media(max-width:480px){body{padding:8px 6px}.app{max-width:100%}.top-header h1{font-size:1.5rem}.card{padding:12px 10px}.action-icon{padding:4px 8px;min-width:44px}.action-icon .icon{font-size:1.2rem}.q-en{font-size:.9rem}.q-ar{font-size:.8rem}.option{padding:8px 10px}.big-btn{font-size:.85rem;padding:10px}.score-circle{width:100px;height:100px}.score-circle::before{width:75px;height:75px}.score-circle .pct{font-size:1.5rem}.progress-ring{width:56px;height:56px}.progress-ring svg{width:56px;height:56px}}
+.tf-badge{display:inline-block;font-size:.6rem;font-weight:700;padding:1px 8px;border-radius:12px;margin-right:6px;background:rgba(79,195,247,0.15);color:var(--primary)}
+body.light .tf-badge{background:#e3f2fd;color:#1565c0}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top-header"><h1> استعِن باللَّهِ ولا تعجِزْ ♥️ </h1><div class="sub">Psychology</div><div class="creator"><i class="fas fa-user-nurse"></i> Created by <span class="name">MR. YASSIN THARWAT</span></div></div>
+<div class="theme-toggle-wrap"><div class="theme-toggle" id="themeToggle"><button class="active" data-theme="dark" onclick="setTheme('dark')"><i class="fas fa-moon"></i></button><button data-theme="light" onclick="setTheme('light')"><i class="fas fa-sun"></i></button></div></div>
+
+<div id="main-screen">
+<div class="card"><div class="card-title"><i class="fas fa-sliders-h"></i> الإجراءات</div>
+<div class="action-icons">
+<div class="action-icon active" data-target="modeOptions" onclick="toggleOptions('modeOptions')"><span class="icon">🎯</span><span class="label">المذاكرة</span></div>
+<div class="action-icon" data-target="orderOptions" onclick="toggleOptions('orderOptions')"><span class="icon">🔀</span><span class="label">الترتيب</span></div>
+<div class="action-icon" data-target="langOptions" onclick="toggleOptions('langOptions')"><span class="icon">🌐</span><span class="label">اللغة</span></div>
+<div class="action-icon" data-target="timerOptions" onclick="toggleOptions('timerOptions')"><span class="icon">⏱️</span><span class="label">المؤقت</span></div>
+</div>
+<div id="modeOptions" class="sub-options show"><button class="action-btn active" data-mode="practice" onclick="selectMode('practice')">تدريب</button><button class="action-btn" data-mode="test" onclick="selectMode('test')">اختبار</button></div>
+<div id="orderOptions" class="sub-options"><button class="action-btn active" data-order="device" onclick="selectOrder('device')">بالترتيب</button><button class="action-btn" data-order="random" onclick="selectOrder('random')">عشوائي</button></div>
+<div id="langOptions" class="sub-options"><button class="action-btn active" data-translate="yes" onclick="selectTranslate('yes')">ترجمة</button><button class="action-btn" data-translate="no" onclick="selectTranslate('no')">EN</button></div>
+<div id="timerOptions" class="sub-options"><button class="action-btn active" data-timer="0" onclick="selectTimer(0)">تثبيت</button><button class="action-btn" data-timer="5" onclick="selectTimer(5)">5s</button><button class="action-btn" data-timer="10" onclick="selectTimer(10)">10s</button></div>
+</div>
+
+<div class="card"><div class="card-title"><span><i class="fas fa-layer-group"></i> المحاضرات المختارة</span><button class="select-all-btn" id="selectAllBtn" onclick="toggleAllSections()">إلغاء الكل</button></div><div id="section-list" class="section-list"></div>
+<div id="section-explanation"><div class="explain-header"><h3 id="explain-title"></h3><div class="explain-controls"><button class="lang-btn active" data-lang="ar" onclick="setExplainLang('ar')">🇪🇬 عربي</button><button class="lang-btn" data-lang="en" onclick="setExplainLang('en')">🇬🇧 English</button><button class="close-explain" onclick="closeExplanation()"><i class="fas fa-times"></i></button></div></div><div id="explain-text" class="ar"></div></div></div>
+
+<button class="big-btn" onclick="startQuiz()"><i class="fas fa-play"></i> ابدأ المذاكرة</button>
+
+<div class="card" id="progressCard"><div class="card-title"><i class="fas fa-chart-line"></i> تقدمك</div>
+<div class="progress-stats"><div class="progress-ring"><svg viewBox="0 0 70 70"><circle class="bg" cx="35" cy="35" r="28"/><circle class="fg" id="progressCircle" cx="35" cy="35" r="28" stroke-dashoffset="176"/></svg><div class="center-text" id="progressPercent">0<small>%</small></div></div>
+<div class="stats-row" style="flex:1;margin:0;"><div class="stat"><div class="num" id="statAttempted">0</div><div class="lbl">تم حله</div></div><div class="stat"><div class="num" id="statCorrect">0</div><div class="lbl">صح</div></div><div class="stat"><div class="num" id="statWrong">0</div><div class="lbl">غلط</div></div></div></div>
+<div class="weak-link" id="weakLink" onclick="startWeakSectionQuiz()"><i class="fas fa-lightbulb"></i> أضعف نقطة: <span id="weakSectionName">-</span> (<span id="weakSectionRate">0%</span>)</div>
+<div class="action-row-bottom"><button class="big-btn warn" onclick="reviewMistakes()"><i class="fas fa-undo-alt"></i> راجع أخطائي</button><button class="big-btn secondary" onclick="resetProgress()"><i class="fas fa-trash-alt"></i> تصفير</button></div></div>
+</div>
+
+<div id="screen-quiz">
+<div class="quiz-meta">
+  <span id="quiz-position"><i class="fas fa-question-circle"></i> 1 / 10</span>
+  <span id="timer-badge" class="hidden"><i class="fas fa-hourglass-half"></i> 30</span>
+  <span id="quiz-score"><i class="fas fa-check-circle" style="color:var(--success);"></i> 0 <i class="fas fa-times-circle" style="color:var(--danger);margin-right:6px;"></i> 0</span>
+</div>
+<div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+
+<div id="questions-grid-container">
+  <div class="grid-title">
+    <span><i class="fas fa-th"></i> انتقل مباشرة لأي سؤال:</span>
+    <span style="font-size:0.65rem; color:var(--muted);"><span style="color:var(--success);">صح</span> | <span style="color:var(--danger);">غلط</span></span>
+  </div>
+  <div class="q-grid" id="q-grid-buttons"></div>
+</div>
+
+<div class="card">
+  <div class="q-header">
+    <div class="q-tag" id="q-section-tag"><i class="fas fa-tag"></i> المحاضرة</div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="grid-toggle-btn" id="btn-toggle-trans" onclick="toggleQuizTranslation()"><i class="fas fa-language"></i> ترجمة</button>
+      <button class="grid-toggle-btn" id="btn-toggle-grid" onclick="toggleQuestionsGrid()"><i class="fas fa-th-large"></i> شبكة الأسئلة</button>
+    </div>
+  </div>
+  <div class="q-en" id="q-en"></div>
+  <div class="q-ar" id="q-ar"></div>
+  <div class="options" id="options"></div>
+  <div id="feedback" class="feedback-box hidden"></div>
+  <div class="nav-row">
+    <button class="big-btn secondary" id="btn-quit" onclick="quitQuiz()" style="flex:0 0 60px;"><i class="fas fa-sign-out-alt"></i></button>
+    <button class="big-btn secondary" id="btn-prev" onclick="previousQuestion()" disabled><i class="fas fa-arrow-right"></i></button>
+    <button class="big-btn" id="btn-next" onclick="nextQuestion()" disabled><i class="fas fa-arrow-left"></i> التالي</button>
+  </div>
+</div>
+</div>
+
+<div id="screen-results"><div class="card" style="text-align:center;"><div class="card-title" style="border:none;text-align:center;padding:0;"><i class="fas fa-trophy" style="color:var(--accent);"></i> نتيجتك</div><div class="score-circle" id="score-circle" style="--pct:0;"><div class="pct" id="result-pct">0%</div><div class="lbl">النسبة</div></div><div class="stats-row"><div class="stat"><div class="num" id="res-total">0</div><div class="lbl">إجمالي</div></div><div class="stat"><div class="num" id="res-correct" style="color:var(--success);">0</div><div class="lbl">صح</div></div><div class="stat"><div class="num" id="res-wrong" style="color:var(--danger);">0</div><div class="lbl">غلط</div></div></div><button class="big-btn" onclick="goHome()"><i class="fas fa-home"></i> الرئيسية</button><button class="big-btn warn hidden" id="btn-show-mistakes" onclick="showMistakesList()"><i class="fas fa-list-ul"></i> الأخطاء</button></div><div id="mistakes-list-wrap" class="card hidden"><div class="card-title"><i class="fas fa-exclamation-triangle" style="color:var(--danger);"></i> أخطائك</div><div id="mistakes-list"></div></div></div>
+
+<div id="speech-hint" class="speech-hint"><i class="fas fa-volume-up"></i> جارٍ النطق...</div>
+<footer>Created by <span class="name">MR. YASSIN THARWAT</span></footer>
+</div>
+
+<script>
+var L_PFX=["A) ","B) ","C) ","D) "];
+function M(en,opts,c,ex){return{en:en,options:opts.map(function(t,i){return{en:L_PFX[i]+t,correct:i===c}}),explain_ar:ex}}
+function T(en,tr,ex){return{en:en,options:[{en:"True",ar:"صواب",correct:!!tr},{en:"False",ar:"خطأ",correct:!tr}],explain_ar:ex||(tr?"صح.":"خطأ.")}}
+
+const ORIGINAL_BANK=[
+  {
+    name:"المحاضرة 1: Introduction to Psychology",
+    nameEn:"المحاضرة الأولى - Lecture 1: Introduction to Psychology",
+    questions:[
+      // 1. Definition & Fields of Psychology
+      M("Psychology is defined as:",["The study of society only","The treatment of physical illness","The scientific study of behavior and mental processes","The study of diseases of the brain only"],2,"علم النفس هو الدراسة العلمية للسلوك والعمليات العقلية."),
+      M("The word 'psyche' in Greek means:",["Behavior","Life","Disease","Mind only"],1,"psyche = الحياة."),
+      M("The word 'logos' in Greek means:",["Explanation","Life","Treatment","Behavior"],0,"logos = التفسير."),
+      M("Psychologists who seek the relationship between biological processes and behavior work in:",["Forensic psychology","Biological (physiological) psychology","Social psychology","Personality psychology"],1,"علم النفس البيولوجي."),
+      M("Studying how people react to sensory stimuli, perceive the world, learn, remember, reason and are motivated is the field of:",["Developmental psychology","Clinical psychology","Forensic psychology","Experimental psychology"],3,"علم النفس التجريبي."),
+      M("Studying human development and factors shaping behavior from birth to old age is:",["Developmental psychology","Experimental psychology","Personality psychology","Social psychology"],0,"علم النفس النمائي."),
+      M("Studying how interaction with others influences attitude, behavior and public opinion is:",["Developmental psychology","Clinical psychology","Social psychology","Biological psychology"],2,"علم النفس الاجتماعي."),
+      M("Studying each individual's unique qualities and differences from others is:",["Clinical psychology","Social psychology","Forensic psychology","Personality psychology"],3,"علم نفس الشخصية."),
+      M("Applying psychological principles to diagnosis and treatment of emotional and behavioral problems is:",["Developmental psychology","Clinical psychology","Experimental psychology","Biological psychology"],1,"علم النفس الإكلينيكي."),
+      M("Psychologists who consult with police departments and prisons work in:",["Forensic psychology","Clinical psychology","Social psychology","Experimental psychology"],0,"علم النفس الجنائي."),
+      T("Psychology is the scientific study of behavior and mental processes.",1,"صح."),
+      T("Personality psychology studies the similarities only, not the differences between individuals.",0,"خطأ؛ تدرس الصفات الفريدة والفروق بين الأفراد."),
+      T("Clinical psychology includes the treatment of drug addiction and marital and family conflict.",1,"صح."),
+      T("Developmental psychology deals with human development from birth to old age.",1,"صح."),
+      T("Biological psychology studies public opinion.",0,"خطأ؛ تهتم بالعلاقة بين العمليات البيولوجية والسلوك."),
+      T("Developmental psychology is concerned only with childhood.",0,"خطأ؛ من الميلاد إلى الشيخوخة."),
+      T("Forensic psychologists work within the legal and judicial systems.",1,"صح."),
+      T("Social psychology studies how interactions with others influence attitudes and behavior.",1,"صح."),
+      T("Psychology is the study of physical diseases only.",0,"خطأ؛ دراسة السلوك والعمليات العقلية."),
+      T("Forensic psychology is the application of psychology to diagnosis of emotional problems in hospitals.",0,"خطأ؛ هذا علم النفس الإكلينيكي."),
+      // 2. Psychology in Relation to Medicine
+      M("Changes in behavior caused by physical disease are called:",["Human behavior in etiology","Behavioral medicine","Behavioral manifestation of medical illness","Patient coping"],2,"المظاهر السلوكية للمرض الطبي."),
+      M("Smoking and reckless driving causing serious medical problems illustrate:",["Coping with illness","Behavioral manifestation of illness","Nurse-patient relations","Human behavior in the etiology of medical problems"],3,"سلوك الإنسان في نشأة المشكلات الطبية."),
+      M("In diseases of the brain, behavior changes arise from:",["Poor diet","Sleep","Damage to localized brain regions","Social factors only"],2,"تلف مناطق محددة من الدماغ."),
+      M("The relation between the nurse/doctor and the patient is described as:",["The heart of all medicine","Only administrative","A minor part of medicine","Not important"],0,"تقع في قلب الطب."),
+      M("The quality of communication between doctor and patient can determine:",["The cost of treatment","The problems discussed and the degree of adherence to treatment","Nothing important","The hospital's size"],1,"تؤثر على المشكلات المناقشة والالتزام بالعلاج."),
+      M("Serious medical illnesses require:",["Isolation","No change","Only medication","Psychological and social adjustment"],3,"تتطلب تكيفاً نفسياً واجتماعياً."),
+      M("Behavioral medicine is concerned with:",["Surgery only","Application of psychological approaches to the treatment of physical disorders","Drug dosage","Hospital management"],1,"تطبيق الأساليب النفسية في علاج الاضطرابات الجسدية."),
+      M("Which methods are used by behavioral medicine to treat hypertension, headache and pain?",["Talk, relaxation, emotional expression and direct behavior modification","Radiation","Surgery only","Antibiotics"],0,"الحديث والاسترخاء والتعبير الانفعالي وتعديل السلوك."),
+      T("Some physical diseases present with changes in behavior.",1,"صح."),
+      T("Serious medical illness requires no psychological or social adjustment.",0,"خطأ؛ تتطلب تكيفاً نفسياً واجتماعياً."),
+      T("The nurse/doctor-patient relation lies at the heart of all medicine.",1,"صح."),
+      T("Physical illnesses never arise from what people do to themselves.",0,"خطأ؛ كثير منها ينشأ مما يفعله الناس بأنفسهم."),
+      T("Changes in behavior are common in many diseases of aging.",1,"صح."),
+      T("Respiratory and cardiovascular diseases cannot be affected by changing behavior.",0,"خطأ؛ يمكن أن تتأثر بالإقلاع عن التدخين والرياضة والغذاء الصحي."),
+      T("Behavioral medicine applies psychological approaches to treat physical disorders.",1,"صح."),
+      T("The quality of nurse-patient communication has no effect on adherence to treatment.",0,"خطأ؛ يؤثر على الالتزام بالعلاج.")
+    ]
+  },
+  {
+    name:"المحاضرة 2: Brain and Behavior",
+    nameEn:"المحاضرة الثانية - Lecture 2: Brain and Behavior",
+    questions:[
+      // 1. Sensory, Motor & Association Systems
+      M("The nervous system is a set of functional units classified as:",["Frontal, parietal and occipital","Cortex, cerebellum and stem","Sensory, motor and association areas","Limbic, RAS and thalamus"],2,"حسية وحركية وارتباطية."),
+      M("Sensory areas of the cerebral cortex:",["Store long-term memory only","Receive impulses from sense receptors","Regulate sleep","Control voluntary movement"],1,"تستقبل الإيعازات من المستقبلات الحسية."),
+      M("Visual impulses end in the:",["Frontal lobe","Parietal lobe","Occipital lobe","Temporal lobe"],2,"الفص القذالي."),
+      M("Auditory impulses end in the:",["Temporal lobe","Parietal lobe","Occipital lobe","Frontal lobe"],0,"الفص الصدغي."),
+      M("Touch, pressure and pain impulses go to the front of the:",["Temporal lobe","Occipital lobe","Frontal lobe","Parietal lobe"],3,"الفص الجداري."),
+      M("Which areas are over-represented in the body sense area?",["The face, lips and fingers","The abdomen","The back and legs","The shoulders"],0,"المناطق شديدة الحساسية."),
+      M("The pathway of sensory impulses passes through which structure before reaching the sensory areas?",["Hypothalamus","Cerebellum","Hippocampus","Thalamus"],3,"تمر عبر المهاد."),
+      M("The motor area controls:",["Vision","Voluntary movement","Hearing","Sleep"],1,"الحركة الإرادية."),
+      M("The decision of whether or not to move is probably made toward the front of the:",["Occipital lobe","Parietal lobe","Frontal lobe","Temporal lobe"],2,"مقدمة الفص الجبهي."),
+      M("Which lobe has NO association area?",["Parietal","Occipital","Frontal","Temporal"],1,"لا توجد منطقة ارتباط قذالية."),
+      T("Body senses (touch, pressure, pain) send impulses to the parietal lobe.",1,"صح."),
+      T("Visual impulses end in the occipital lobe.",1,"صح."),
+      T("Association areas exist in the frontal, parietal, temporal and occipital lobes.",0,"خطأ؛ لا توجد منطقة ارتباط قذالية."),
+      T("A separate sensory map is formed for each sensory modality.",1,"صح."),
+      T("The motor area controls voluntary movement.",1,"صح."),
+      T("The motor system has no role in communication.",0,"خطأ؛ يمكّن الشخص من التأثير على سلوك الآخرين بالتواصل."),
+      T("The decision to move is probably made in the occipital lobe.",0,"خطأ؛ في مقدمة الفص الجبهي."),
+      T("Highly sensitive areas such as the face, lips and fingers are over-represented in the body sense area.",1,"صح."),
+      T("Auditory impulses end in the occipital lobe.",0,"خطأ؛ تنتهي في الفص الصدغي."),
+      T("Sensory impulses reach the cortex without passing through the thalamus.",0,"خطأ؛ تمر عبر المهاد."),
+      // 2. Cerebral Cortex & Lobes
+      M("The cerebral cortex is:",["The spinal cord","The innermost part of the brain","The large convoluted outer covering of the brain, the seat of cognitive functioning and voluntary action","A relay station only"],2,"القشرة المخية الغطاء الخارجي، مقر الإدراك والفعل الإرادي."),
+      M("The two cerebral hemispheres are separated by a:",["Deep fissure running from front to back","Bone","Thick membrane","Ventricle only"],0,"شق عميق من الأمام للخلف."),
+      M("Each cerebral hemisphere is formed of how many lobes?",["Two","Five","Three","Four"],3,"أربعة فصوص."),
+      M("Executive function (decision making and planning) is a function of the:",["Cerebellum","Parietal lobe","Frontal lobe","Occipital lobe"],2,"الفص الجبهي."),
+      M("Language production in the left hemisphere is a function of the:",["Occipital lobe","Frontal lobe","Temporal lobe","Parietal lobe"],1,"إنتاج اللغة في الفص الجبهي الأيسر."),
+      M("Language comprehension in the left hemisphere is a function of the:",["Temporal lobe","Frontal lobe","Occipital lobe","Parietal lobe"],0,"فهم اللغة في الفص الصدغي."),
+      M("Audition and memory are functions of the:",["Occipital lobe","Parietal lobe","Frontal lobe","Temporal lobe"],3,"الفص الصدغي."),
+      M("Tactile sensation, reading and calculation (left) are functions of the:",["Temporal lobe","Occipital lobe","Parietal lobe","Frontal lobe"],2,"الفص الجداري."),
+      M("Vision and visual perception are functions of the:",["Temporal lobe","Occipital lobe","Parietal lobe","Frontal lobe"],1,"الفص القذالي."),
+      M("Visuospatial function (right) is a function of the:",["Frontal lobe","Temporal lobe","Occipital lobe","Parietal lobe"],3,"الفص الجداري الأيمن."),
+      M("Regulation of the autonomic nervous system and control of emotion belong to the:",["Frontal lobe","Parietal lobe","Cerebellum","Occipital lobe"],0,"الفص الجبهي."),
+      T("Each cerebral hemisphere has four lobes.",1,"صح."),
+      T("The frontal lobe is responsible for vision.",0,"خطأ؛ الرؤية للفص القذالي."),
+      T("The cerebral hemispheres are separated by a fissure running from side to side.",0,"خطأ؛ من الأمام للخلف."),
+      T("The parietal lobe is involved in tactile sensation, reading and calculation.",1,"صح."),
+      T("Language comprehension in the left hemisphere is a function of the occipital lobe.",0,"خطأ؛ الفص الصدغي."),
+      T("The occipital lobe is responsible for vision and visual perception.",1,"صح."),
+      T("The temporal lobe is involved in audition and memory.",1,"صح."),
+      T("Voluntary movement is a function of the occipital lobe.",0,"خطأ؛ للفص الجبهي."),
+      T("The cerebral cortex is the seat of cognitive functioning and voluntary action.",1,"صح."),
+      T("Executive function is a function of the parietal lobe.",0,"خطأ؛ للفص الجبهي."),
+      // 3. Limbic System, Hypothalamus, Thalamus & RAS
+      M("The limbic system includes:",["The cerebellum and medulla","The frontal, parietal and occipital lobes","The thalamus only","The amygdala, septal area and hippocampus"],3,"اللوزة والمنطقة الحاجزية والحصين."),
+      M("The limbic system is involved in:",["Emotional and motivational reactions, sexual and eating behavior","Hearing only","Vision only","Movement only"],0,"ردود الفعل الانفعالية والدافعية والسلوك الجنسي والغذائي."),
+      M("Which structure is responsible for the transfer of memories to long-term storage?",["Hypothalamus","Occipital lobe","Hippocampus","Thalamus"],2,"الحصين."),
+      M("Which structure is involved in feeding, drinking, temperature and sleep regulation and endocrine control?",["Cerebellum","Hypothalamus","Hippocampus","Thalamus"],1,"ما تحت المهاد."),
+      M("The hypothalamus is considered part of the:",["Spinal cord","Cerebellum","Occipital lobe","Limbic system"],3,"جزء من الجهاز الحوفي."),
+      M("The final sensory relay station that projects sensory fibers to the cerebrum is the:",["Hypothalamus","Thalamus","Amygdala","Hippocampus"],1,"المهاد."),
+      M("Which sense does NOT pass through the thalamus?",["Hearing","Vision","Smell","Touch"],2,"الشم لا يمر عبر المهاد."),
+      M("The reticular activating system (RAS) is involved in:",["Level of arousal or activation","Memory storage","Vision","Movement"],0,"مستوى الاستثارة."),
+      M("The RAS acts like a:",["Hormone gland","Storage unit","Muscle controlling movement","Valve/filter that allows sensory messages to pass to higher centers or shuts them off"],3,"تعمل كصمام أو مرشح."),
+      M("The RAS is a network of nerve fibers extending from the:",["Thalamus to the cerebellum","Hippocampus to amygdala","Brain stem to the cerebrum","Cerebrum to the spinal cord"],2,"من جذع الدماغ إلى المخ."),
+      T("Smell does not pass through the thalamus.",1,"صح."),
+      T("The hypothalamus is the final sensory relay station.",0,"خطأ؛ هذا المهاد."),
+      T("The RAS is responsible only for movement.",0,"خطأ؛ مسؤول عن الاستثارة والتصفية."),
+      T("The hippocampus is responsible for the transfer of memories to long-term storage.",1,"صح."),
+      T("All sensory messages including smell pass through the thalamus.",0,"خطأ؛ باستثناء الشم."),
+      T("The limbic system is involved in emotional and motivational reactions.",1,"صح."),
+      T("The amygdala is not part of the limbic system.",0,"خطأ؛ هي جزء منه."),
+      T("The RAS is involved in the level of arousal.",1,"صح."),
+      T("The hypothalamus is involved in feeding, drinking and temperature regulation.",1,"صح."),
+      T("The thalamus is responsible for the transfer of memories to long-term storage.",0,"خطأ؛ الحصين.")
+    ]
+  },
+  {
+    name:"المحاضرة 3: Personality",
+    nameEn:"المحاضرة الثالثة - Lecture 3: Personality",
+    questions:[
+      // 1. Personality: Definitions
+      M("The total quality of an individual's behavior as shown in characteristic habits, thought and expressions is:",["Personality","Trait","Behavior only","Character"],0,"الشخصية."),
+      M("Which term refers mostly to conduct that can be called right or wrong according to social standards?",["Habit","Character","Personality","Trait"],1,"الخلق."),
+      M("A particular type of behavior that characterizes the individual and is fairly consistent over time is a:",["Character","Reflex","Habit","Personality trait"],3,"سمة الشخصية."),
+      M("A person is described as honest or dishonest according to social standards. This is a description of:",["Trait only","Character","Intelligence","Reflex"],1,"وصف للخلق."),
+      T("Personality traits change completely from one situation to another.",0,"خطأ؛ ثابتة نسبياً عبر الزمن."),
+      T("Personality is the total quality of an individual's behavior, habits, thought and expressions.",1,"صح."),
+      T("Personality traits are fairly consistent over a period of time.",1,"صح."),
+      T("Character refers to inherited physical features.",0,"خطأ؛ يشير للسلوك الذي يُحكم عليه بالصواب أو الخطأ."),
+      // 2. Factors Affecting Personality Development
+      M("General health, genetic, chemical and endocrinal factors are:",["Social factors","Geographical factors","Biological factors","Prenatal factors only"],2,"العوامل البيولوجية."),
+      M("Chemical substances circulating in the blood may affect:",["The brain and thus behavior","Only the heart","Only the skin","Nothing"],0,"تؤثر على الدماغ والسلوك."),
+      M("Different personality traits in different parts of the world refer to:",["Biological factors","Postnatal factors","Social factors","Geographical factors"],3,"العوامل الجغرافية."),
+      M("Ready-made impressions of racial characters are called:",["Traits","Stereotypes","Habits","Roles"],1,"الصور النمطية."),
+      M("The eldest child having a different personality from the youngest is an effect of:",["Order of birth","Prenatal effects","Hypoxia","Role of school"],0,"ترتيب الميلاد."),
+      M("Overcautious and protective parents lead to a child with:",["An independent personality","A defensive negativistic personality","A dependent personality","An aggressive personality"],2,"شخصية اعتمادية."),
+      M("Parents lacking in love and hard in punishment lead to:",["A dependent personality","A confident personality","An independent personality","A defensive, negativistic personality"],3,"شخصية دفاعية سلبية."),
+      M("Stress of mothers during pregnancy could lead to the child's:",["Strong assertiveness","Better learning","Timidity and lack of assertiveness","Increased height"],2,"يؤدي للخجل ونقص توكيد الذات."),
+      M("Barbiturates or amphetamines taken by the mother during pregnancy can affect:",["Nothing","The finer differentiation of the CNS and later behavior","Only macroscopic abnormalities","Only the placenta"],1,"تؤثر على تمايز الجهاز العصبي المركزي وسلوك الطفل."),
+      M("Babies with low birth weight frequently have:",["Behavioral disorders","Stronger personality","No problems","Higher intelligence"],0,"اضطرابات سلوكية."),
+      M("CNS infections and trauma after birth are:",["Social factors","Postnatal events influencing behavior","Prenatal effects","Geographical factors"],1,"أحداث ما بعد الولادة."),
+      T("Postnatal CNS infections and trauma do not influence behavior.",0,"خطأ؛ تؤثر على السلوك."),
+      T("Biological factors include general health, genetic, chemical and endocrinal factors.",1,"صح."),
+      T("Overprotective parents may produce a dependent personality in the child.",1,"صح."),
+      T("The school has no role in forming personality.",0,"خطأ؛ للمدرسة دور."),
+      T("Low birth weight and hypoxia during delivery are associated with behavioral disorders.",1,"صح."),
+      T("Maternal stress during pregnancy could lead to timidity in the child.",1,"صح."),
+      T("Overprotective parents produce a defensive, negativistic child.",0,"خطأ؛ شخصية اعتمادية، أما قلة الحب وقسوة العقاب فتنتج دفاعية سلبية."),
+      T("Drugs taken by the mother in pregnancy affect only macroscopic abnormalities.",0,"خطأ؛ تؤثر أيضاً على تمايز الجهاز العصبي."),
+      T("An only child may develop different traits from other children.",1,"صح."),
+      T("Geographical factors have no effect on personality traits.",0,"خطأ؛ تختلف السمات في أنحاء العالم."),
+      // 3. Variables Determining Individual Behavior
+      M("Intellectual abilities, social skills and other abilities are:",["Subjective value","Cognitive strategies","Competencies","Outcome expectancy"],2,"الكفاءات."),
+      M("Selective attention to information and organizing it into meaningful units is:",["Cognitive strategies","Competencies","Outcome expectancy","Self-regulatory systems"],0,"الاستراتيجيات المعرفية."),
+      M("Expectations about the consequences of different behavior are:",["Competencies","Subjective value","Cognitive strategies","Outcome expectancy"],3,"توقع النتائج."),
+      M("Two people with similar expectations behave differently because of differences in:",["Age only","Competencies only","Subjective value of the outcome","Sleep"],2,"القيمة الذاتية للنتيجة."),
+      M("Rules guiding behavior, self-imposed rewards or punishment and ability to plan steps toward a goal are:",["Outcome expectancy","Self-regulatory systems and plans","Cognitive strategies","Competencies"],1,"الأنظمة والخطط التنظيمية الذاتية."),
+      T("Competencies include intellectual abilities and social skills.",1,"صح."),
+      T("Individuals with similar expectations may behave differently due to differences in subjective value.",1,"صح."),
+      T("Self-regulatory systems have no effect on differences in behavior.",0,"خطأ؛ تؤدي لاختلاف السلوك."),
+      T("Cognitive strategies refer to expectations about consequences.",0,"خطأ؛ هذا توقع النتائج.")
+    ]
+  },
+  {
+    name:"المحاضرة 4: States of Consciousness",
+    nameEn:"المحاضرة الرابعة - Lecture 4: States of Consciousness",
+    questions:[
+      // 1. Consciousness, Sleep & Wakefulness
+      M("Consciousness describes:",["Only memory","Only sleep","Only emotions","Our awareness of internal and external stimuli"],3,"الوعي إدراكنا للمنبهات الداخلية والخارجية."),
+      M("Which is an example of awareness of INTERNAL stimuli?",["Feeling hunger or pain","Seeing sunlight","Hearing a friend's voice","Feeling the warmth of the sun"],0,"الجوع والألم منبهات داخلية."),
+      M("Which is an example of awareness of EXTERNAL stimuli?",["Feeling sleepy","Feeling thirst","Hearing the voice of a friend","Being aware of one's emotions"],2,"صوت الصديق منبه خارجي."),
+      M("Sleep is a state marked by:",["Relatively low physical activity and reduced sensory awareness, distinct from rest","High levels of thought","High sensory awareness","Complete unconsciousness always"],0,"نشاط جسدي منخفض ووعي حسي أقل."),
+      M("Wakefulness is characterized by:",["Absence of thought","Low sensory awareness","Reduced activity","High levels of sensory awareness, thought and behavior"],3,"مستوى عال من الوعي الحسي والتفكير والسلوك."),
+      M("Which is another state of consciousness?",["Reading only","Daydreaming","Walking only","Eating"],1,"أحلام اليقظة."),
+      T("Feeling hunger, thirst and pain is awareness of internal stimuli.",1,"صح."),
+      T("Consciousness describes awareness of internal and external stimuli.",1,"صح."),
+      T("Sleep is the same as rest.",0,"خطأ؛ النوم حالة تختلف عن الراحة."),
+      T("Wakefulness is characterized by high sensory awareness, thought and behavior.",1,"صح."),
+      T("Hearing the voice of a friend is awareness of an internal stimulus.",0,"خطأ؛ منبه خارجي."),
+      T("Daydreaming, intoxication and anesthesia are not states of consciousness.",0,"خطأ؛ هي حالات وعي أخرى."),
+      // 2. Insomnia & Parasomnia
+      M("Consistent difficulty in falling or staying asleep is:",["Sleep apnea","Night terror","Insomnia","Parasomnia"],2,"الأرق."),
+      M("The most common sleep disorder is:",["Sleep apnea","Insomnia","Night terrors","Sleepwalking"],1,"الأرق الأكثر شيوعاً."),
+      M("A sleep disorder in which unwanted, disruptive motor activity or experiences occur during sleep is:",["Sleep apnea","Wakefulness","Insomnia","Parasomnia"],3,"اضطراب النوم الطفيلي."),
+      M("An individual who wakes several times at night and cannot get back to sleep suffers from:",["Insomnia","Parasomnia","Sleep apnea","Night terror"],0,"الأرق."),
+      T("Sleep apnea is the most common sleep disorder.",0,"خطأ؛ الأرق الأكثر شيوعاً."),
+      T("Parasomnia involves unwanted, disruptive motor activity during sleep.",1,"صح."),
+      T("Insomnia is the most common of the sleep disorders.",1,"صح."),
+      T("Parasomnia is a consistent difficulty in falling asleep.",0,"خطأ؛ هذا الأرق."),
+      // 3. Sleepwalking, Restless Leg Syndrome & Night Terrors
+      M("A sleeper engaging in complex behaviors from wandering to driving a car has:",["Sleep apnea","Sleepwalking","Night terror","Insomnia"],1,"المشي أثناء النوم."),
+      M("During sleepwalking, sleepers often have their eyes open but:",["Are fully awake","Answer all questions","Remember everything","Are not responsive to attempts to communicate"],3,"لا يستجيبون للتواصل."),
+      M("Uncomfortable leg sensations during inactivity relieved by moving the legs describe:",["Sleep apnea","Night terrors","Restless leg syndrome","Sleepwalking"],2,"متلازمة تململ الساقين."),
+      M("Restless leg syndrome is common with:",["Chronic kidney disease and diabetes","Common cold","Fractures","Skin allergy"],0,"الفشل الكلوي المزمن والسكري."),
+      M("A sense of panic during sleep with screams and attempts to escape describes:",["Restless leg syndrome","Night terrors","Sleepwalking","Insomnia"],1,"الذعر الليلي."),
+      M("Individuals suffering from night terrors generally:",["Remember everything","Need surgery","Have no memory of the events","Never fall back asleep"],2,"لا يتذكرون ما حدث."),
+      M("Treatment of night terrors is generally:",["Always surgical","Daily medication","Always required","Unnecessary unless there is an underlying medical or psychological condition"],3,"غير ضروري إلا لوجود حالة مرضية أو نفسية كامنة."),
+      T("Individuals with night terrors cannot go back to sleep.",0,"خطأ؛ يعودون للنوم خلال وقت قصير."),
+      T("Treatment for night terrors is generally unnecessary unless there is an underlying condition.",1,"صح."),
+      T("Sleepwalkers always remember what they did and respond to attempts to communicate.",0,"خطأ؛ لا يستجيبون."),
+      T("Restless leg syndrome is relieved by deliberately moving the legs.",1,"صح."),
+      T("In sleepwalking, sleepers often have open eyes but do not respond to communication.",1,"صح."),
+      T("Restless leg syndrome is unrelated to medical diagnoses like diabetes.",0,"خطأ؛ شائعة مع الفشل الكلوي والسكري."),
+      T("Night terrors are accompanied by screams and attempts to escape.",1,"صح."),
+      T("People with night terrors usually remember the events clearly.",0,"خطأ؛ لا يتذكرون."),
+      // 4. Sleep Apnea
+      M("Episodes during which a sleeper's breathing stops describe:",["Sleep apnea","Sleepwalking","Insomnia","Night terrors"],0,"انقطاع النفس النومي."),
+      M("Sleep apnea episodes can last:",["1–2 seconds","1 hour","1 minute exactly","10–20 seconds or longer"],3,"10-20 ثانية أو أكثر."),
+      M("People with sleep apnea experience increased levels of:",["Appetite only","Fatigue","Alertness","Energy"],1,"التعب."),
+      M("Many patients first seek treatment because their sleeping partners report:",["Dreaming","Night terrors","Loud snoring or stopping breathing","Sleepwalking"],2,"شريك النوم يلاحظ الشخير الشديد وتوقف التنفس."),
+      M("Sleep apnea is much more common in:",["Overweight people","Athletes only","Children only","Underweight people"],0,"أكثر شيوعاً لدى أصحاب الوزن الزائد."),
+      M("Sleep apnea may exacerbate:",["Eye diseases","Fractures","Cardiovascular disease","Skin diseases"],2,"قد يفاقم أمراض القلب والأوعية."),
+      M("Who should be checked for sleep apnea?",["Anyone, regardless of weight, who snores loudly or gasps for air during sleep","Nobody","Only overweight people","Only children"],0,"أي شخص يشخر بصوت عال أو يلهث أثناء النوم."),
+      T("Sleep apnea may exacerbate cardiovascular disease.",1,"صح."),
+      T("Loud snoring is often associated with sleep apnea.",1,"صح."),
+      T("Sleep apnea causes decreased fatigue.",0,"خطأ؛ تزيد التعب."),
+      T("Only overweight people should be checked for sleep apnea.",0,"خطأ؛ أي شخص يشخر بصوت عال."),
+      T("People with sleep apnea may not be aware of the repeated disruptions in sleep.",1,"صح."),
+      T("Sleep apnea is defined by episodes during which breathing stops during sleep.",1,"صح."),
+      T("Sleep apnea is more common in underweight people.",0,"خطأ؛ أكثر شيوعاً في زائدي الوزن."),
+      T("Sleep apnea episodes last less than one second.",0,"خطأ؛ 10-20 ثانية أو أكثر.")
+    ]
+  },
+  {
+    name:"المحاضرة 5: Attention",
+    nameEn:"المحاضرة الخامسة - Lecture 5: Attention",
+    questions:[
+      // 1. Definition & Types of Attention
+      M("Attention is defined as:",["Memorizing information","The process by which we select some stimuli for further processing while ignoring others","Reacting to pain only","Sleeping lightly"],1,"عملية اختيار منبهات معينة ومعالجتها مع تجاهل غيرها."),
+      M("Attention caused by a gunshot or a flash of light is:",["Spontaneous attention","Voluntary attention","Habitual attention","Involuntary attention"],3,"انتباه لا إرادي."),
+      M("Listening to a lecture because we intend to hear and see is:",["Habitual attention","Voluntary attention","Spontaneous attention","Involuntary attention"],1,"انتباه إرادي."),
+      M("Attention in which no conscious effort is made is:",["Selective inattention","Voluntary attention","Spontaneous attention","Involuntary attention only"],2,"انتباه تلقائي."),
+      M("Attention without an act of will, as when listening to a story, is:",["Involuntary attention","Defective attention","Voluntary attention","Habitual attention"],3,"انتباه اعتيادي."),
+      M("A student suddenly turns when a door slams loudly. This is:",["Involuntary attention","Trance state","Habitual attention","Voluntary attention"],0,"انتباه لا إرادي."),
+      M("A nurse deliberately focuses on a patient's blood pressure reading. This is:",["Distractibility","Involuntary attention","Spontaneous attention","Voluntary attention"],3,"انتباه إرادي."),
+      T("Spontaneous attention involves no conscious effort.",1,"صح."),
+      T("A gunshot attracts voluntary attention.",0,"خطأ؛ لا إرادي."),
+      T("Attention is the process of selecting some stimuli for further processing while ignoring others.",1,"صح."),
+      T("Listening to a lecture on purpose is voluntary attention.",1,"صح."),
+      T("Habitual attention requires a strong act of will.",0,"خطأ؛ بلا مجهود إرادي."),
+      T("There are only two types of attention.",0,"خطأ؛ أربعة أنواع."),
+      // 2. External Factors Stimulating Attention
+      M("External factors are especially important in the art of:",["Sleep","Surgery","Advertising","Diagnosis"],2,"الإعلان."),
+      M("Which stimulus attracts more attention?",["Small print","Pictures, especially those containing human beings","Gray text","Plain words"],1,"الصور خاصة التي بها بشر."),
+      M("The ordinary reader observes more of:",["The upper half of the newspaper","The back page","The lower half","The margins"],0,"النصف العلوي."),
+      M("Bright colors and loud sounds attract attention due to:",["Position","Repetition","Mental set","Intensity of the stimulus"],3,"شدة المنبه."),
+      M("A figure standing out from its background attracts attention because of:",["Contrast of stimulus","Biological needs","Intensity","Position"],0,"التباين."),
+      M("Which may be the most important factor in attracting attention?",["Position","Repetition","Changeability of stimulus","Type"],2,"قابلية التغير."),
+      M("A flickering light directs attention more than a steady one. This shows:",["Mental set","Changeability","Position","Contrast"],1,"التغير."),
+      M("A repeated advertisement is more likely to be noticed because of:",["Position","Contrast","Type","Repetition of stimulus"],3,"التكرار."),
+      M("Which is NOT an external factor?",["Contrast","Position","Mental set","Repetition"],2,"الاستعداد الذهني عامل داخلي."),
+      T("Mental set is an external factor stimulating attention.",0,"خطأ؛ عامل داخلي."),
+      T("Pictures attract more attention than words, especially those containing human beings.",1,"صح."),
+      T("A steady light attracts more attention than a flickering one.",0,"خطأ؛ الوامض أكثر."),
+      T("Contrast with the background does not influence attention.",0,"خطأ؛ التباين يجذب الانتباه."),
+      T("A repeated stimulus is more likely to be noticed than a single one.",1,"صح."),
+      T("The lower half of the newspaper is observed more than the upper half.",0,"خطأ؛ العلوي."),
+      T("Intensity of the stimulus, such as bright colors and loud sounds, attracts attention.",1,"صح."),
+      T("Changeability may be the most important factor in attracting attention.",1,"صح."),
+      // 3. Internal Factors & Causes of Distraction
+      M("Internal factors that stimulate attention are:",["Individual factors making the person more attentive to certain objects","Advertising","Noise","Lighting"],0,"عوامل فردية."),
+      M("The smell of food attracts the hungry person more than the well-fed one. This is:",["Contrast","Biological needs","Repetition","Mental set"],1,"الحاجات البيولوجية."),
+      M("A person who wants to buy a certain object notices it first in a shop. This is:",["Mental set","Position","Biological need","Intensity"],0,"الاستعداد الذهني."),
+      M("Which physical cause may lead to distraction?",["Regular meals","Fatigue, lack of sleep and malnutrition","Good nutrition","Good sleep"],1,"الإرهاق وقلة النوم وسوء التغذية."),
+      M("Distraction due to lack of interest in a subject is a:",["Physical cause","Biological cause","Psychological cause","Environmental cause"],2,"سبب نفسي."),
+      M("Distraction secondary to obsessional thoughts occupying the mind is:",["A normal state","A physical cause","An environmental cause","A psychological cause"],3,"سبب نفسي."),
+      M("Distraction due to fear, hallucinations and abnormal thoughts occurs in:",["Mild fatigue","Schizophrenia","Normal reading","Good sleep"],1,"الفصام."),
+      M("Persistent family problems such as financial problems or marital disturbances cause:",["Better attention","Habitual attention","Distraction","Spontaneous attention"],2,"التشتت."),
+      M("Insufficient lighting, excessive heat or cold and excessive noise are:",["Environmental causes of distraction","Physical disorders","Trance states","Internal factors of attention"],0,"أسباب بيئية."),
+      M("A student complains of poor concentration. He sleeps 3 hours daily and skips meals. The most likely contributing causes are:",["Excess lighting","Repetition","Hallucinations","Fatigue, lack of sleep and irregular meals"],3,"الإرهاق وعدم انتظام الوجبات."),
+      T("Biological needs and mental set are internal factors of attention.",1,"صح."),
+      T("Excessive noise and poor ventilation help attention.",0,"خطأ؛ تسبب التشتت."),
+      T("Daydreams and unresolved conflicts have no effect on attention.",0,"خطأ؛ تسبب التشتت."),
+      T("Endocrinal disturbances may lead to distraction.",1,"صح."),
+      T("Lack of interest in a subject may cause distraction.",1,"صح."),
+      T("Irregular meals and malnutrition improve concentration.",0,"خطأ؛ تسبب التشتت."),
+      T("Distraction in manic-depressive disorder is never seen.",0,"خطأ؛ يحدث."),
+      T("Distraction may occur in schizophrenia due to fear and hallucinations.",1,"صح."),
+      // 4. Disorders of Attention
+      M("Attention intensified in a restricted area occurs in:",["Sleepwalking","Depression with hypochondriasis","Normal people","Mania"],1,"الاكتئاب مع توهم المرض."),
+      M("Attention reduced in some psychiatric disorders is:",["Selective inattention","Habitual attention","Spontaneous attention","Trance"],0,"عدم الانتباه الانتقائي."),
+      M("Defective attention may be due to physical factors such as fatigue or psychological factors such as:",["Joy","Good sleep","Interest","Anxiety"],3,"القلق."),
+      M("Inability to sustain attention which is drawn to unimportant external stimuli is:",["Voluntary attention","Selective inattention","Distractibility","Trance"],2,"سهولة التشتت."),
+      M("Trance states are characterized by:",["Increased awareness","Normal contact","Deep sleep EEG","Altered awareness and reduced contact with the environment"],3,"وعي متغير وتواصل أقل."),
+      M("In trance states the EEG resembles that of:",["The awakening state","REM only","Deep sleep","Coma"],0,"اليقظة."),
+      M("A patient whose attention is drawn to every passing noise and cannot finish a task has:",["Trance state","Distractibility","Voluntary attention","Selective inattention"],1,"سهولة التشتت."),
+      M("A patient with altered awareness, little contact with the environment, but waking-like EEG has:",["Habitual attention","Sleep","Trance state","Distractibility"],2,"حالة غيبوبة (ترانس)."),
+      T("Intensified attention in a restricted area occurs in healthy sleep.",0,"خطأ؛ في الاكتئاب مع توهم المرض."),
+      T("Selective inattention is reduction of attention in some psychiatric disorders.",1,"صح."),
+      T("In trance states the EEG is similar to deep sleep.",0,"خطأ؛ يشبه اليقظة."),
+      T("Anxiety may cause defective attention.",1,"صح."),
+      T("Trance states involve increased contact with the environment.",0,"خطأ؛ تواصل أقل."),
+      T("Distractibility is the inability to sustain attention drawn to irrelevant stimuli.",1,"صح.")
+    ]
+  }
+];
+
+const QUESTION_BANK=ORIGINAL_BANK.map(function(sec){
+  return{
+    name:sec.name,nameEn:sec.nameEn,originalName:sec.name,
+    questions:sec.questions.map(function(q,idx){return Object.assign({},q,{num:idx+1})})
+  };
+});
+
+const LS_KEY='psychology_qbank_v1';
+const TRANS_CACHE_KEY='psychology_trans_cache_v1';
+let transCache={};
+let state={mode:'practice',order:'device',showTranslation:true,timerSeconds:0,quizQuestions:[],currentIndex:0,correctCount:0,wrongCount:0,answered:false,selectedOptionIdx:null,sessionMistakes:[],timerInterval:null,timeLeft:0,questionStates:[]};
+let maleEnglishVoice=null,currentExplainLang='ar',currentExplainName='';
+
+function safeGetLS(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function safeSetLS(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function safeRemoveLS(k){try{localStorage.removeItem(k)}catch(e){}}
+try{transCache=JSON.parse(safeGetLS(TRANS_CACHE_KEY)||'{}')||{};}catch(e){transCache={};}
+
+function saveTransCache(){
+  try{
+    const keys=Object.keys(transCache);
+    if(keys.length>2500)keys.slice(0,500).forEach(k=>delete transCache[k]);
+    safeSetLS(TRANS_CACHE_KEY,JSON.stringify(transCache));
+  }catch(e){}
+}
+
+async function translateEnToAr(text){
+  if(!text)return '';
+  const clean=text.replace(/_{3,}/g,'...').trim();
+  if(transCache[clean])return transCache[clean];
+  try{
+    const res=await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(clean));
+    if(res.ok){
+      const data=await res.json();
+      if(data&&Array.isArray(data[0])){
+        const out=data[0].map(x=>(x&&x[0])?x[0]:'').join('').trim();
+        if(out){transCache[clean]=out;return out;}
+      }
+    }
+  }catch(e){}
+  try{
+    const res2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(clean)+'&langpair=en|ar');
+    if(res2.ok){
+      const d2=await res2.json();
+      const out2=d2&&d2.responseData&&d2.responseData.translatedText;
+      if(out2&&out2.trim()){transCache[clean]=out2.trim();return out2.trim();}
+    }
+  }catch(e){}
+  return '';
+}
+
+const AR_LETTERS=['أ) ','ب) ','ج) ','د) '];
+async function ensureQuestionTranslated(q){
+  if(!q||q._transDone)return;
+  let changed=false;
+  const tasks=[];
+  if(!q.ar){tasks.push(translateEnToAr(q.en).then(ar=>{if(ar){q.ar=ar;changed=true;}}));}
+  q.options.forEach((opt,i)=>{
+    if(!opt.ar){
+      const m=opt.en.match(/^([A-D]\)\s*)(.*)$/i);
+      const body=m?m[2]:opt.en, prefix=m?(AR_LETTERS[i]||''):'';
+      tasks.push(translateEnToAr(body).then(ar=>{if(ar){opt.ar=prefix+ar;changed=true;}}));
+    }
+  });
+  if(tasks.length>0){await Promise.all(tasks);if(changed)saveTransCache();}
+  q._transDone=!!(q.ar&&q.options.every(o=>!!o.ar));
+}
+
+function prefetchNextQuestions(fromIdx){
+  if(!state.showTranslation)return;
+  [fromIdx+1,fromIdx+2].forEach(i=>{if(i<state.quizQuestions.length)ensureQuestionTranslated(state.quizQuestions[i]);});
+}
+
+function setTheme(t){document.body.classList.toggle('light',t==='light');document.querySelectorAll('.theme-toggle button').forEach(b=>{b.classList.toggle('active',b.dataset.theme===t)});safeSetLS('informatics_theme',t)}
+function loadProgress(){try{const r=safeGetLS(LS_KEY);if(!r)return{attempted:{},mistakes:{}};return JSON.parse(r)}catch(e){return{attempted:{},mistakes:{}}}}
+function saveProgress(p){safeSetLS(LS_KEY,JSON.stringify(p))}
+function qid(s,n){return s+'___'+n}
+
+function isTFQuestion(q){
+  if(q.options&&q.options.length===2){
+    const o0=(q.options[0].en||'').trim().toLowerCase(),o1=(q.options[1].en||'').trim().toLowerCase();
+    return(o0==='true'||o0.startsWith('true'))&&(o1==='false'||o1.startsWith('false'));
+  }
+  return false;
+}
+
+function showExplanation(name){
+  currentExplainName=name;
+  const box=document.getElementById('section-explanation'),title=document.getElementById('explain-title'),textDiv=document.getElementById('explain-text');
+  const data={
+    "المحاضرة 1: Introduction to Psychology":{
+      text_ar:"تشمل المحاضرة الأولى (36 سؤالاً):\n• تعريف علم النفس ومجالاته: الدراسة العلمية للسلوك والعمليات العقلية، معنى psyche (الحياة) و logos (التفسير)، والمجالات (البيولوجي، التجريبي، النمائي، الاجتماعي، الشخصية، الإكلينيكي، الجنائي).\n• علاقة علم النفس بالطب: المظاهر السلوكية للمرض الطبي، دور السلوك البشري في نشأة المشكلات الطبية (كالتدخين)، علاقة الطبيب والممرض بالمريض (قلب الطب)، وأساليب الطب السلوكي في علاج الأمراض الجسدية.",
+      text_en:"Covers Lecture 1 (36 Questions):\n• Definition & Fields of Psychology: scientific study of behavior and mental processes; Greek roots psyche (life) and logos (explanation); branches (biological, experimental, developmental, social, personality, clinical, forensic).\n• Psychology in Relation to Medicine: behavioral manifestations of medical illness, human behavior in etiology of medical problems, nurse/doctor-patient relationship, psychological/social adjustment, and behavioral medicine."
+    },
+    "المحاضرة 2: Brain and Behavior":{
+      text_ar:"تشمل المحاضرة الثانية (61 سؤالاً):\n• الأنظمة الحسية والحركية ومناطق الارتباط: استقبال الإشارات الحسية (القذالي للبصر، الصدغي للسمع، الجداري للمس والألم والضغط)، مرورها بالمهاد (ما عدا الشم)، المنطقة الحركية، وغياب منطقة الارتباط في الفص القذالي.\n• القشرة المخية وفصوصها الأربعة: الجبهي (التفكير التنفيذي، إنتاج اللغة، الحركة الإرادية، الانفعالات)، الصدغي (السمع، الذاكرة، فهم اللغة)، الجداري (اللمس، القراءة والحساب، الإدراك البصري المكاني)، والقذالي (الرؤية).\n• الجهاز الحوفي والمهاد وما تحت المهاد وRAS: الحصين (نقل الذكريات للذاكرة طويلة المدى)، ما تحت المهاد (التغذية والحرارة والنوم والغدد الصماء)، المهاد (محطة الترحيل الحسية)، وRAS (الاستثارة واليقظة وتصفية الإشارات).",
+      text_en:"Covers Lecture 2 (61 Questions):\n• Sensory, Motor & Association Systems: sensory areas, thalamus relay, motor cortex, and absence of association area in the occipital lobe.\n• Cerebral Cortex & Lobes: frontal (executive function, language production, emotion), temporal (audition, memory, language comprehension), parietal (tactile, reading/calculation, visuospatial), and occipital (vision).\n• Limbic System, Hypothalamus, Thalamus & RAS: hippocampus (memory transfer), hypothalamus (feeding, drinking, temperature, sleep, endocrine), thalamus (final sensory relay except smell), and RAS (arousal & filtering)."
+    },
+    "المحاضرة 3: Personality":{
+      text_ar:"تشمل المحاضرة الثالثة (38 سؤالاً):\n• تعريفات الشخصية: الشخصية (الجودة الكلية للسلوك والعادات والتفكير)، الخلق Character (السلوك المحكوم عليه بالصواب والخطأ وفق معايير المجتمع)، وسمات الشخصية (ثابتة نسبياً عبر الزمن).\n• العوامل المؤثرة في نمو الشخصية: البيولوجية (الصحة العامة والوراثة والمواد الكيميائية والغدد)، الجغرافية والصور النمطية، ترتيب الميلاد وأسلوب الوالدين (الحماية المفرطة تنتج شخصية اعتمادية، وقلة الحب وقسوة العقاب تنتج شخصية دفاعية سلبية)، وعوامل ما قبل الولادة وما بعد الولادة.\n• المتغيرات المحددة لسلوك الفرد: الكفاءات، الاستراتيجيات المعرفية، توقع النتائج، القيمة الذاتية للنتيجة، والأنظمة والخطط التنظيمية الذاتية.",
+      text_en:"Covers Lecture 3 (38 Questions):\n• Personality Definitions: personality, character (moral/social right or wrong), and personality traits (fairly consistent over time).\n• Factors Affecting Personality Development: biological, geographical & stereotypes, birth order, parenting styles (overprotective -> dependent; lacking love/harsh punishment -> defensive negativistic), prenatal (stress, drugs, low birth weight/hypoxia) and postnatal events.\n• Variables Determining Individual Behavior: competencies, cognitive strategies, outcome expectancy, subjective value, and self-regulatory systems."
+    },
+    "المحاضرة 4: States of Consciousness":{
+      text_ar:"تشمل المحاضرة الرابعة (50 سؤالاً):\n• الوعي والنوم واليقظة: إدراك المنبهات الداخلية (الجوع والألم) والخارجية (صوت صديق)، الفرق بين النوم والراحة، اليقظة، وحالات الوعي الأخرى (أحلام اليقظة، التسمم، التخدير).\n• الأرق واضطراب النوم الطفيلي (Parasomnia): الأرق أكثر اضطرابات النوم شيوعاً (صعوبة بدء أو استمرار النوم)، وParasomnia (سلوكيات حركية غير مرغوبة أثناء النوم).\n• المشي أثناء النوم وتململ الساقين والذعر الليلي: عدم استجابة السائر نائماً للتواصل، تحسن تململ الساقين بالحركة وشيوعه مع الفشل الكلوي والسكري، والذعر الليلي (صراخ وفزع وعدم تذكر الحدث).\n• انقطاع النفس النومي: توقف التنفس 10–20 ثانية أو أكثر، الشخير العالي والتعب، وشيوعه لدى زائدي الوزن وتفاقم أمراض القلب والأوعية.",
+      text_en:"Covers Lecture 4 (50 Questions):\n• Consciousness, Sleep & Wakefulness: internal vs. external stimuli, sleep vs. rest, wakefulness, daydreaming.\n• Insomnia & Parasomnia: insomnia as the most common sleep disorder; parasomnia as disruptive motor activity.\n• Sleepwalking, Restless Leg Syndrome & Night Terrors: lack of responsiveness in sleepwalking, RLS relief by movement and link to CKD/diabetes, and night terrors (panic, screams, amnesia).\n• Sleep Apnea: breathing pauses ≥10–20s, fatigue, loud snoring, cardiovascular exacerbation."
+    },
+    "المحاضرة 5: Attention":{
+      text_ar:"تشمل المحاضرة الخامسة (62 سؤالاً):\n• تعريف الانتباه وأنواعه الأربعة: الإرادي (بمجهود)، اللا إرادي (كصوت طلقة نارية)، التلقائي (بلا مجهود واعٍ)، والاعتيادي (دون فعل إرادة كسماع قصة).\n• العوامل الخارجية المنبهة للانتباه: أهمية الإعلان، الصور خاصة التي بها بشر، النصف العلوي للصحيفة، الشدة، التباين، التكرار، وقابلية التغير (قد يكون الأهم).\n• العوامل الداخلية وأسباب التشتت: الحاجات البيولوجية والاستعداد الذهني (داخلي)، وأسباب التشتت الجسدية (الإرهاق وقلة النوم وسوء التغذية)، النفسية (عدم الاهتمام والوساوس والفصام)، والبيئية (الإضاءة والضوضاء والحرارة).\n• اضطرابات الانتباه: الانتباه المكثف في نطاق ضيق (الاكتئاب مع توهم المرض)، عدم الانتباه الانتقائي، سهولة التشتت، وحالات الغيبوبة/الترانس (وعي متغير مع تخطيط دماغ يشبه اليقظة).",
+      text_en:"Covers Lecture 5 (62 Questions):\n• Definition & 4 Types of Attention: voluntary, involuntary, spontaneous, habitual.\n• External Factors: advertising, pictures of humans, upper half of newspaper, intensity, contrast, repetition, changeability.\n• Internal Factors & Causes of Distraction: biological needs, mental set; physical, psychological, and environmental causes of distraction.\n• Disorders of Attention: intensified restricted attention, selective inattention, distractibility, and trance states (altered awareness with waking-like EEG)."
+    }
+  };
+  const d=data[name];title.textContent=name;
+  if(!d){textDiv.textContent=currentExplainLang==='ar'?'لا يوجد شرح':'No explanation.';box.classList.add('show');updateExplainTextClass();return;}
+  textDiv.innerHTML=(currentExplainLang==='ar'?d.text_ar:d.text_en).replace(/\n/g,'<br>');updateExplainTextClass();box.classList.add('show');
+}
+function updateExplainTextClass(){const t=document.getElementById('explain-text');t.classList.remove('ar','en');t.classList.add(currentExplainLang);}
+function closeExplanation(){document.getElementById('section-explanation').classList.remove('show');}
+function setExplainLang(l){currentExplainLang=l;document.querySelectorAll('.explain-controls .lang-btn').forEach(b=>{b.classList.toggle('active',b.dataset.lang===l)});if(currentExplainName)showExplanation(currentExplainName);}
+
+function updateHomeStats(){
+  const p=loadProgress(),keys=Object.keys(p.attempted||{});let c=0,w=0;
+  keys.forEach(k=>{if(p.attempted[k]==='correct')c++;else w++});
+  const total=keys.length,pct=total?Math.round((c/total)*100):0;
+  document.getElementById('statAttempted').textContent=total;
+  document.getElementById('statCorrect').textContent=c;
+  document.getElementById('statWrong').textContent=w;
+  document.getElementById('progressPercent').innerHTML=pct+'<small>%</small>';
+  document.getElementById('progressCircle').style.strokeDashoffset=176-(pct/100)*176;
+  updateWeakSectionSuggestion(p);
+}
+
+function updateWeakSectionSuggestion(p){
+  const att=p.attempted||{};let bestIdx=-1,bestRate=0,bestName='';
+  QUESTION_BANK.forEach((sec,idx)=>{
+    let a=0,w=0;sec.questions.forEach(q=>{const k=qid(sec.name,q.num);if(att[k]!==undefined){a++;if(att[k]==='wrong')w++}});
+    if(a>=2){const rate=w/a;if(rate>bestRate){bestRate=rate;bestIdx=idx;bestName=sec.name}}
+  });
+  const link=document.getElementById('weakLink');
+  if(bestIdx>=0&&bestRate>0){
+    link.style.display='flex';document.getElementById('weakSectionName').textContent=bestName;
+    document.getElementById('weakSectionRate').textContent=Math.round(bestRate*100)+'%';link.dataset.sectionIdx=bestIdx;
+  }else link.style.display='none';
+}
+
+function buildSectionList(){
+  const wrap=document.getElementById('section-list');if(!wrap)return;wrap.innerHTML='';
+  QUESTION_BANK.forEach((sec,idx)=>{
+    const div=document.createElement('div');div.className='section-item active';div.dataset.idx=idx;
+    const nameSpan=document.createElement('span');nameSpan.className='sec-title';nameSpan.textContent=sec.nameEn;
+    const infoBtn=document.createElement('button');infoBtn.className='info-btn';infoBtn.type='button';infoBtn.innerHTML='<i class="fas fa-info-circle"></i>';infoBtn.title="شرح المحاضرة";
+    infoBtn.onclick=(e)=>{e.stopPropagation();showExplanation(sec.originalName)};
+    const cntSpan=document.createElement('span');cntSpan.className='cnt';cntSpan.textContent=sec.questions.length;
+    div.appendChild(nameSpan);div.appendChild(infoBtn);div.appendChild(cntSpan);
+    div.onclick=()=>{div.classList.toggle('active');updateToggleAllButton();};
+    wrap.appendChild(div);
+  });
+  updateToggleAllButton();
+}
+
+function toggleAllSections(){
+  const items=document.querySelectorAll('#section-list .section-item');
+  const allActive=Array.from(items).every(el=>el.classList.contains('active'));
+  items.forEach(el=>el.classList.toggle('active',!allActive));updateToggleAllButton();
+}
+function updateToggleAllButton(){
+  const items=document.querySelectorAll('#section-list .section-item');
+  const activeCount=document.querySelectorAll('#section-list .section-item.active').length;
+  const btn=document.getElementById('selectAllBtn');
+  if(btn)btn.textContent=(activeCount===items.length&&items.length>0)?'إلغاء الكل':'تحديد الكل';
+}
+
+function toggleOptions(t){
+  document.querySelectorAll('.sub-options').forEach(e=>e.classList.remove('show'));
+  const target=document.getElementById(t);if(target)target.classList.add('show');
+  document.querySelectorAll('.action-icon').forEach(e=>e.classList.remove('active'));
+  const activeIcon=document.querySelector(`.action-icon[data-target="${t}"]`);if(activeIcon)activeIcon.classList.add('active');
+}
+function closeAllOptions(){
+  document.querySelectorAll('.sub-options').forEach(e=>e.classList.remove('show'));
+  document.querySelectorAll('.action-icon').forEach(e=>e.classList.remove('active'));
+  const def=document.querySelector('.action-icon[data-target="modeOptions"]');if(def)def.classList.add('active');
+}
+function selectMode(m){state.mode=m;document.querySelectorAll('#modeOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.mode===m)});closeAllOptions();}
+function selectOrder(o){state.order=o;document.querySelectorAll('#orderOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.order===o)});closeAllOptions();}
+function selectTranslate(t){state.showTranslation=(t==='yes');document.querySelectorAll('#langOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.translate===t)});closeAllOptions();}
+function selectTimer(s){state.timerSeconds=s;document.querySelectorAll('#timerOptions .action-btn').forEach(e=>{e.classList.toggle('active',parseInt(e.dataset.timer)===s)});closeAllOptions();}
+function toggleQuizTranslation(){
+  state.showTranslation=!state.showTranslation;
+  document.querySelectorAll('#langOptions .action-btn').forEach(e=>{e.classList.toggle('active',(e.dataset.translate==='yes')===state.showTranslation)});
+  renderQuestion();
+}
+
+function enterApp(){
+  try{
+    document.getElementById('main-screen').style.display='block';
+    buildSectionList();updateHomeStats();
+    setTheme(safeGetLS('informatics_theme')||'dark');
+    if(window.speechSynthesis){
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged=()=>{window.speechSynthesis.getVoices();maleEnglishVoice=null;};
+    }
+  }catch(err){
+    const wrap=document.getElementById('section-list');
+    if(wrap)wrap.innerHTML='<div style="color:#ef5350;padding:10px;">خطأ: '+err.message+'</div>';
+  }
+}
+function goHome(){stopTimer();document.getElementById('screen-quiz').classList.remove('active');document.getElementById('screen-results').classList.remove('active');document.getElementById('main-screen').style.display='block';updateHomeStats();}
+function quitQuiz(){if(confirm('متأكد تخرج؟')){stopTimer();goHome();}}
+function resetProgress(){if(confirm('متأكد تصفير التقدم؟')){safeRemoveLS(LS_KEY);updateHomeStats();}}
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
+
+function startQuiz(){
+  const activeEls=document.querySelectorAll('#section-list .section-item.active');
+  if(activeEls.length===0){alert('اختار محاضرة واحدة على الأقل!');return;}
+  const idxs=Array.from(activeEls).map(el=>parseInt(el.dataset.idx));
+  let qs=[];
+  idxs.forEach(idx=>{const sec=QUESTION_BANK[idx];sec.questions.forEach(q=>{qs.push(Object.assign({},q,{sectionName:sec.name,options:q.options.map(o=>Object.assign({},o))}));});});
+  if(qs.length===0){alert('هذه المحاضرة لا تحتوي على أسئلة!');return;}
+  if(state.order==='random')qs=shuffleArray(qs);
+  state.quizQuestions=qs;state.currentIndex=0;state.correctCount=0;state.wrongCount=0;state.sessionMistakes=[];
+  state.questionStates=qs.map(()=>({selectedOption:null,answered:false,isCorrect:false,chosenIdxs:[]}));
+  document.getElementById('main-screen').style.display='none';
+  document.getElementById('screen-quiz').classList.add('active');
+  document.getElementById('screen-results').classList.remove('active');
+  const gridContainer=document.getElementById('questions-grid-container');if(gridContainer)gridContainer.classList.remove('show');
+  renderQuestion();
+}
+
+function reviewMistakes(){
+  const p=loadProgress(),mistakeKeys=Object.keys(p.mistakes||{});
+  if(mistakeKeys.length===0){alert('مفيش أخطاء للمراجعة 🎉');return;}
+  let qs=[];
+  QUESTION_BANK.forEach(sec=>{sec.questions.forEach(q=>{if(mistakeKeys.includes(qid(sec.name,q.num)))qs.push(Object.assign({},q,{sectionName:sec.name,options:q.options.map(o=>Object.assign({},o))}));});});
+  if(qs.length===0){alert('مفيش أخطاء للمراجعة 🎉');return;}
+  state.quizQuestions=qs;state.currentIndex=0;state.correctCount=0;state.wrongCount=0;state.sessionMistakes=[];state.mode='practice';
+  state.questionStates=qs.map(()=>({selectedOption:null,answered:false,isCorrect:false,chosenIdxs:[]}));
+  document.getElementById('main-screen').style.display='none';
+  document.getElementById('screen-quiz').classList.add('active');
+  document.getElementById('screen-results').classList.remove('active');
+  const gridContainer=document.getElementById('questions-grid-container');if(gridContainer)gridContainer.classList.remove('show');
+  renderQuestion();
+}
+
+function startWeakSectionQuiz(){
+  const link=document.getElementById('weakLink'),idx=link.dataset.sectionIdx;if(idx===undefined)return;
+  document.querySelectorAll('#section-list .section-item').forEach(el=>{el.classList.toggle('active',el.dataset.idx==idx)});
+  startQuiz();
+}
+
+function toggleQuestionsGrid(){
+  const gridContainer=document.getElementById('questions-grid-container');if(!gridContainer)return;
+  gridContainer.classList.toggle('show');
+  if(gridContainer.classList.contains('show'))renderGridButtons();
+}
+function renderGridButtons(){
+  const gridDiv=document.getElementById('q-grid-buttons');if(!gridDiv)return;gridDiv.innerHTML='';
+  state.quizQuestions.forEach((_,i)=>{
+    const btn=document.createElement('button');btn.className='grid-btn';btn.textContent=i+1;
+    const st=state.questionStates[i];
+    if(i===state.currentIndex)btn.classList.add('current');
+    if(st.answered)btn.classList.add(st.isCorrect?'answered-correct':'answered-wrong');
+    btn.onclick=()=>goToSpecificQuestion(i);
+    gridDiv.appendChild(btn);
+  });
+}
+function goToSpecificQuestion(targetIndex){if(targetIndex>=0&&targetIndex<state.quizQuestions.length){state.currentIndex=targetIndex;renderQuestion();}}
+
+function renderQuestion(){
+  const idx=state.currentIndex,q=state.quizQuestions[idx],st=state.questionStates[idx];
+  state.answered=st.answered;state.selectedOptionIdx=st.selectedOption;
+  const total=state.quizQuestions.length;
+  document.getElementById('quiz-position').innerHTML=`<i class="fas fa-question-circle"></i> ${idx+1} / ${total}`;
+  document.getElementById('quiz-score').innerHTML=`<i class="fas fa-check-circle" style="color:var(--success);"></i> ${state.correctCount} <i class="fas fa-times-circle" style="color:var(--danger);margin-right:4px;"></i> ${state.wrongCount}`;
+  document.getElementById('progress-bar').style.width=(idx/total*100)+'%';
+  const qIsTF=isTFQuestion(q);
+  let tagText=`<i class="fas fa-tag"></i> ${q.sectionName}`;
+  if(qIsTF)tagText+=` <span class="tf-badge">صواب / خطأ</span>`;
+  document.getElementById('q-section-tag').innerHTML=tagText;
+  const transBtn=document.getElementById('btn-toggle-trans');
+  if(transBtn)transBtn.innerHTML=state.showTranslation?'<i class="fas fa-language"></i> ترجمة: مفعّلة':'<i class="fas fa-language"></i> EN فقط';
+  const gridToggleBtn=document.getElementById('btn-toggle-grid'),gridContainer=document.getElementById('questions-grid-container');
+  if(state.mode==='practice'){if(gridToggleBtn)gridToggleBtn.style.display='inline-flex';if(gridContainer&&gridContainer.classList.contains('show'))renderGridButtons();}
+  else{if(gridToggleBtn)gridToggleBtn.style.display='none';if(gridContainer)gridContainer.classList.remove('show');}
+
+  wrapEnglishText(`${q.num}. ${q.en}`,document.getElementById('q-en'));
+  const qAr=document.getElementById('q-ar');
+  if(state.showTranslation){qAr.textContent=q.ar||'جارٍ الترجمة...';qAr.style.display='block';}
+  else{qAr.textContent='';qAr.style.display='none';}
+
+  const opts=document.getElementById('options');opts.innerHTML='';
+  q.options.forEach((opt,i)=>{
+    const div=document.createElement('div');div.className='option';div.dataset.idx=i;div.dataset.correct=opt.correct?'true':'false';
+    const enDiv=document.createElement('div');enDiv.className='opt-en';wrapEnglishText(opt.en,enDiv);
+    const arDiv=document.createElement('div');arDiv.className='opt-ar';arDiv.textContent=opt.ar||'';arDiv.style.display=state.showTranslation&&opt.ar?'block':'none';
+    const mark=document.createElement('span');mark.className='mark';
+    div.appendChild(enDiv);div.appendChild(arDiv);div.appendChild(mark);
+    div.onclick=()=>onOptionClick(i);
+    opts.appendChild(div);
+  });
+
+  if(state.showTranslation){
+    if(!q._transDone){
+      ensureQuestionTranslated(q).then(()=>{
+        if(state.currentIndex!==idx||!state.showTranslation)return;
+        qAr.textContent=q.ar||'';qAr.style.display=q.ar?'block':'none';
+        const optEls=opts.querySelectorAll('.option');
+        q.options.forEach((opt,i)=>{
+          if(optEls[i]){const arEl=optEls[i].querySelector('.opt-ar');if(arEl){arEl.textContent=opt.ar||'';arEl.style.display=opt.ar?'block':'none';}}
+        });
+      });
+    }
+    prefetchNextQuestions(idx);
+  }
+
+  if(st.answered){
+    const chosenIdxs=st.chosenIdxs;
+    document.querySelectorAll('.option').forEach(el=>{
+      const idxOpt=parseInt(el.dataset.idx);el.classList.add('disabled');
+      if(el.dataset.correct==='true'){el.classList.add('correct');el.querySelector('.mark').textContent='✅';}
+      else if(chosenIdxs.includes(idxOpt)){el.classList.add('wrong');el.querySelector('.mark').textContent='❌';}
+      if(st.selectedOption===idxOpt)el.classList.add('selected');
+    });
+    const fb=document.getElementById('feedback');fb.classList.remove('hidden');fb.className='feedback-box '+(st.isCorrect?'correct':'wrong');
+    let correctLabels=qIsTF?((q.options.find(o=>o.correct)||{}).en==='True'?'True (صواب)':'False (خطأ)'):q.options.map(o=>o.correct?o.en:null).filter(Boolean).join('، ');
+    fb.innerHTML=`<div class="fb-title">${st.isCorrect?'✅ صحيحة!':'❌ غلط'}</div>${!st.isCorrect?`<div><b>الصح:</b> ${correctLabels}</div>`:''}<div class="fb-explain">💡 ${q.explain_ar||''}</div>`;
+  }else{
+    document.getElementById('feedback').classList.add('hidden');document.getElementById('feedback').innerHTML='';
+  }
+
+  const nextBtn=document.getElementById('btn-next'),prevBtn=document.getElementById('btn-prev');
+  prevBtn.disabled=(idx===0);const isLast=idx===total-1;
+  if(state.mode==='test'){
+    nextBtn.disabled=(state.selectedOptionIdx===null);
+    nextBtn.innerHTML=`<i class="fas fa-arrow-left"></i> ${isLast?'إنهاء ✅':'التالي ⬅️'}`;
+    nextBtn.onclick=()=>{
+      if(state.selectedOptionIdx===null)return;
+      if(!state.answered){
+        const q2=state.quizQuestions[state.currentIndex];
+        const isCorrect=isTFQuestion(q2)?((document.querySelector(`.option[data-idx="${state.selectedOptionIdx}"]`)||{}).dataset?.correct==='true'):q2.options[state.selectedOptionIdx].correct;
+        finalizeAnswer(isCorrect,[state.selectedOptionIdx]);
+      }
+      if(state.currentIndex<state.quizQuestions.length-1){state.currentIndex++;renderQuestion();}else{showResults();}
+    };
+  }else{
+    nextBtn.disabled=false;
+    nextBtn.innerHTML=isLast?`<i class="fas fa-flag-checkered"></i> إنهاء`:`<i class="fas fa-arrow-left"></i> التالي`;
+    nextBtn.onclick=()=>{
+      if(!state.answered){alert('يجب اختيار إجابة أولاً!');return;}
+      if(state.currentIndex<state.quizQuestions.length-1){state.currentIndex++;renderQuestion();}else{showResults();}
+    };
+  }
+  if(!st.answered)startTimer();else stopTimer();
+}
+
+function onOptionClick(i){
+  if(state.answered)return;state.selectedOptionIdx=i;
+  document.querySelectorAll('.option').forEach(el=>el.classList.remove('selected'));
+  document.querySelector(`.option[data-idx="${i}"]`).classList.add('selected');
+  if(state.mode==='test'){document.getElementById('btn-next').disabled=false;}else{submitSingleAnswer(i);}
+}
+function submitSingleAnswer(i){
+  const q=state.quizQuestions[state.currentIndex];
+  const isCorrect=isTFQuestion(q)?(document.querySelector(`.option[data-idx="${i}"]`).dataset.correct==='true'):!!q.options[i].correct;
+  finalizeAnswer(isCorrect,[i]);
+}
+function finalizeAnswer(isCorrect,chosenIdxs){
+  stopTimer();state.answered=true;
+  const idx=state.currentIndex,st=state.questionStates[idx],q=state.quizQuestions[idx];
+  st.selectedOption=state.selectedOptionIdx;st.answered=true;st.isCorrect=isCorrect;st.chosenIdxs=chosenIdxs;
+  if(isCorrect)state.correctCount++;else state.wrongCount++;
+  const p=loadProgress(),key=qid(q.sectionName,q.num);
+  p.attempted=p.attempted||{};p.mistakes=p.mistakes||{};p.attempted[key]=isCorrect?'correct':'wrong';
+  if(isCorrect)delete p.mistakes[key];else p.mistakes[key]=true;
+  saveProgress(p);
+  if(!isCorrect)state.sessionMistakes.push({q,chosenIdxs});
+  renderQuestion();
+}
+function previousQuestion(){if(state.currentIndex>0){state.currentIndex--;renderQuestion();}}
+
+function showResults(){
+  stopTimer();document.getElementById('screen-quiz').classList.remove('active');
+  document.getElementById('screen-results').classList.add('active');document.getElementById('mistakes-list-wrap').classList.add('hidden');
+  const total=state.quizQuestions.length,pct=total?Math.round((state.correctCount/total)*100):0;
+  document.getElementById('result-pct').textContent=pct+'%';document.getElementById('score-circle').style.setProperty('--pct',pct);
+  document.getElementById('res-total').textContent=total;document.getElementById('res-correct').textContent=state.correctCount;document.getElementById('res-wrong').textContent=state.wrongCount;
+  document.getElementById('btn-show-mistakes').classList.toggle('hidden',state.sessionMistakes.length===0);
+}
+
+function showMistakesList(){
+  const wrap=document.getElementById('mistakes-list-wrap'),list=document.getElementById('mistakes-list');list.innerHTML='';
+  state.sessionMistakes.forEach(m=>{
+    const q=m.q;let yourAnswers='',correctAnswers='';
+    if(isTFQuestion(q)){
+      yourAnswers=m.chosenIdxs.length?m.chosenIdxs.map(i=>i===0?'True (صواب)':'False (خطأ)').join('، '):'لم تُجب (انتهى الوقت)';
+      correctAnswers=(q.options.find(o=>o.correct)||{}).en==='True'?'True (صواب)':'False (خطأ)';
+    }else{
+      yourAnswers=m.chosenIdxs.length?m.chosenIdxs.map(i=>q.options[i].en).join('، '):'لم تُجب (انتهى الوقت)';
+      correctAnswers=q.options.map(o=>o.correct?o.en:null).filter(Boolean).join('، ');
+    }
+    const div=document.createElement('div');div.className='mistake-item';
+    const toggleBtn=document.createElement('button');toggleBtn.className='mistake-toggle';toggleBtn.innerHTML='<i class="fas fa-eye"></i> عرض السؤال';
+    const detailDiv=document.createElement('div');detailDiv.className='mistake-detail';detailDiv.style.display='none';
+    const qHeader=document.createElement('div');qHeader.style.fontWeight='bold';qHeader.style.marginBottom='8px';qHeader.textContent=`${q.num}. ${q.en}`;detailDiv.appendChild(qHeader);
+    if(q.ar){const qArH=document.createElement('div');qArH.style.color='var(--muted)';qArH.style.marginBottom='8px';qArH.style.direction='rtl';qArH.style.textAlign='right';qArH.textContent=q.ar;detailDiv.appendChild(qArH);}
+    const optsDiv=document.createElement('div');
+    q.options.forEach((opt,i)=>{
+      const row=document.createElement('div');row.className='opt-row';
+      const label=document.createElement('span');label.className='opt-label';label.textContent=opt.en+(opt.ar?' — '+opt.ar:'');
+      const status=document.createElement('span');status.className='opt-status';
+      if(opt.correct){status.textContent='✅';status.style.color='var(--success)';}
+      else if(m.chosenIdxs.includes(i)){status.textContent='❌';status.style.color='var(--danger)';}
+      else{status.textContent='—';status.style.color='var(--muted)';}
+      row.appendChild(label);row.appendChild(status);optsDiv.appendChild(row);
+    });
+    detailDiv.appendChild(optsDiv);
+    const explainDiv=document.createElement('div');explainDiv.style.marginTop='8px';explainDiv.style.fontStyle='italic';explainDiv.style.color='var(--muted)';explainDiv.style.direction='rtl';explainDiv.style.textAlign='right';explainDiv.textContent=`💡 ${q.explain_ar||''}`;detailDiv.appendChild(explainDiv);
+    toggleBtn.onclick=()=>{const vis=detailDiv.style.display!=='none';detailDiv.style.display=vis?'none':'block';toggleBtn.innerHTML=vis?'<i class="fas fa-eye"></i> عرض السؤال':'<i class="fas fa-eye-slash"></i> إخفاء السؤال';};
+    div.innerHTML=`<div class="m-q">${q.num}. ${q.en}</div><div class="m-you">إجابتك: ${yourAnswers}</div><div class="m-correct">الصح: ${correctAnswers}</div>`;
+    div.appendChild(toggleBtn);div.appendChild(detailDiv);list.appendChild(div);
+  });
+  wrap.classList.remove('hidden');wrap.scrollIntoView({behavior:'smooth'});
+}
+
+function stopTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;}const b=document.getElementById('timer-badge');b.classList.add('hidden');b.classList.remove('warn','danger');}
+function startTimer(){stopTimer();if(!state.timerSeconds||state.timerSeconds<=0)return;const badge=document.getElementById('timer-badge');state.timeLeft=state.timerSeconds;badge.classList.remove('hidden','warn','danger');badge.innerHTML=`<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;state.timerInterval=setInterval(()=>{state.timeLeft--;if(state.timeLeft<=0){badge.innerHTML=`<i class="fas fa-hourglass-end"></i> 0`;stopTimer();onTimeUp();return;}badge.innerHTML=`<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;badge.classList.toggle('warn',state.timeLeft<=3&&state.timeLeft>1);badge.classList.toggle('danger',state.timeLeft<=1);},1000);}
+function onTimeUp(){if(state.answered)return;finalizeAnswer(false,state.selectedOptionIdx!==null?[state.selectedOptionIdx]:[]);}
+
+function getMaleEnglishVoice(){if(maleEnglishVoice)return maleEnglishVoice;const voices=window.speechSynthesis.getVoices();let v=voices.find(v=>v.lang==='en-US'&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang.startsWith('en')&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang.startsWith('en'));maleEnglishVoice=v;return v;}
+function speakWord(word){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.7;u.pitch=1;u.volume=1;const v=getMaleEnglishVoice();if(v)u.voice=v;window.speechSynthesis.speak(u);}
+
+function wrapEnglishText(text,container){
+  if(!container)return;container.innerHTML='';if(!text)return;
+  const tempDiv=document.createElement('div');tempDiv.innerHTML=text;
+  function processNodes(node,target){
+    node.childNodes.forEach(child=>{
+      if(child.nodeType===Node.TEXT_NODE){
+        const words=child.textContent.split(' ');
+        words.forEach((word,idx)=>{
+          if(word.trim()===''){target.appendChild(document.createTextNode(' '));return;}
+          const span=document.createElement('span');span.className='word-en';span.textContent=word;
+          let pressTimer=null;
+          const startPress=()=>{pressTimer=setTimeout(()=>{speakWord(word.replace(/[^a-zA-Z]/g,''));span.classList.add('speaking');setTimeout(()=>span.classList.remove('speaking'),600);const hint=document.getElementById('speech-hint');hint.textContent=`🔊 ${word}`;hint.classList.add('show');setTimeout(()=>hint.classList.remove('show'),900);},800);};
+          const endPress=()=>{if(pressTimer){clearTimeout(pressTimer);pressTimer=null;}};
+          span.addEventListener('pointerdown',startPress);span.addEventListener('pointerup',endPress);span.addEventListener('pointerleave',endPress);
+          span.addEventListener('touchstart',startPress,{passive:true});span.addEventListener('touchend',endPress,{passive:true});
+          target.appendChild(span);
+          if(idx<words.length-1)target.appendChild(document.createTextNode(' '));
+        });
+      }else if(child.nodeType===Node.ELEMENT_NODE){
+        const clone=child.cloneNode(false);target.appendChild(clone);processNodes(child,clone);
+      }
+    });
+  }
+  processNodes(tempDiv,container);
+}
+
+document.addEventListener('click',function(e){const btn=e.target.closest('.big-btn');if(!btn)return;const rect=btn.getBoundingClientRect();const ripple=document.createElement('span');ripple.className='ripple';const size=Math.max(rect.width,rect.height);ripple.style.width=ripple.style.height=size+'px';ripple.style.left=(e.clientX-rect.left-size/2)+'px';ripple.style.top=(e.clientY-rect.top-size/2)+'px';btn.appendChild(ripple);setTimeout(()=>ripple.remove(),500);});
+
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',enterApp);}else{enterApp();}
+</script>
+</body>
+</html>
